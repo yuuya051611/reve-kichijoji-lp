@@ -24,10 +24,33 @@
   ::selection{ background:var(--accent); color:#fff; }
   .reveal{ opacity:0; transform:translateY(28px); transition:opacity .9s cubic-bezier(.16,.84,.44,1), transform .9s cubic-bezier(.16,.84,.44,1); }
   .reveal.in{ opacity:1; transform:translateY(0); }
+  .reveal-left{ opacity:0; transform:translateX(-50px); transition:opacity 1s cubic-bezier(.16,.84,.44,1), transform 1s cubic-bezier(.16,.84,.44,1); }
+  .reveal-left.in{ opacity:1; transform:translateX(0); }
+  .reveal-right{ opacity:0; transform:translateX(50px); transition:opacity 1s cubic-bezier(.16,.84,.44,1), transform 1s cubic-bezier(.16,.84,.44,1); }
+  .reveal-right.in{ opacity:1; transform:translateX(0); }
+  .reveal-scale{ opacity:0; transform:scale(.88) translateY(16px); transition:opacity .8s cubic-bezier(.16,.84,.44,1), transform .8s cubic-bezier(.16,.84,.44,1); }
+  .reveal-scale.in{ opacity:1; transform:scale(1) translateY(0); }
   .reveal-1{ transition-delay:.08s; } .reveal-2{ transition-delay:.18s; } .reveal-3{ transition-delay:.28s; }
+  .features.reveal-1 .feature:nth-child(1),
+  .benefits-grid.reveal-1 .benefit-card:nth-child(1),
+  .gallery.reveal-1 .gcard:nth-child(1){ transition-delay:.05s; }
+  .features.reveal-1 .feature:nth-child(2),
+  .benefits-grid.reveal-1 .benefit-card:nth-child(2),
+  .gallery.reveal-1 .gcard:nth-child(2){ transition-delay:.14s; }
+  .features.reveal-1 .feature:nth-child(3),
+  .benefits-grid.reveal-1 .benefit-card:nth-child(3),
+  .gallery.reveal-1 .gcard:nth-child(3){ transition-delay:.23s; }
+  .features.reveal-1 .feature:nth-child(4),
+  .benefits-grid.reveal-1 .benefit-card:nth-child(4),
+  .gallery.reveal-1 .gcard:nth-child(4){ transition-delay:.32s; }
+  .gallery.reveal-1 .gcard:nth-child(5){ transition-delay:.41s; }
+  .gallery.reveal-1 .gcard:nth-child(6){ transition-delay:.50s; }
+  .gallery.reveal-1 .gcard:nth-child(7){ transition-delay:.59s; }
+  .gallery.reveal-1 .gcard:nth-child(8){ transition-delay:.68s; }
   header{ position:fixed; top:0; left:0; right:0; z-index:100; padding:26px 0; transition:padding .35s ease, background .35s ease, box-shadow .35s ease; }
   header .wrap{ display:flex; align-items:center; justify-content:space-between; }
   header.scrolled{ padding:14px 0; background:rgba(255,250,246,0.92); backdrop-filter:blur(10px); box-shadow:0 1px 0 var(--line); }
+  .scroll-progress{ position:fixed; top:0; left:0; height:3px; width:0%; background:linear-gradient(90deg, var(--accent2), var(--accent), var(--accent-deep)); z-index:200; transition:width .1s linear; }
   .logo{ font-size:21px; font-weight:600; letter-spacing:0.1em; display:flex; align-items:baseline; gap:8px;}
   .logo .en{ font-size:24px; color:var(--accent-deep); }
   .nav-links{ display:flex; gap:28px; font-size:12px; letter-spacing:0.05em; }
@@ -46,6 +69,7 @@
   .burger{ display:none; flex-direction:column; gap:5px; cursor:pointer; }
   .burger span{ width:22px; height:1px; background:var(--ink); display:block; }
   .hero{ position:relative; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:150px 0 60px; background: radial-gradient(ellipse at 15% 15%, rgba(255,111,145,0.20), transparent 50%), radial-gradient(ellipse at 85% 25%, rgba(255,179,71,0.18), transparent 45%), radial-gradient(ellipse at 50% 100%, rgba(255,158,176,0.14), transparent 55%), var(--bg); overflow:hidden; }
+  .hero-parallax{ will-change:transform, opacity; }
   .hero-illust{ width:min(480px, 70vw); margin:0 auto 8px; opacity:.9; }
   .hero-illust path, .hero-illust line{ fill:none; stroke:var(--accent-deep); stroke-width:1.4; stroke-linecap:round; stroke-dasharray:900; stroke-dashoffset:900; animation:draw 2.6s cubic-bezier(.4,.1,.2,1) forwards; }
   .hero-illust .l2{ animation-delay:.15s; } .hero-illust .l3{ animation-delay:.30s; } .hero-illust .l4{ animation-delay:.45s; } .hero-illust .l5{ animation-delay:.60s; } .hero-illust .l6{ animation-delay:.75s; }
@@ -58,15 +82,7 @@
   .hero h1{ font-size:clamp(32px, 5.2vw, 56px); font-weight:600; line-height:1.55; margin-bottom:24px; }
   .hero h1 .en{ font-size:1.15em; color:var(--accent-deep); }
   .hero p.sub{ font-size:16px; color:var(--ink-soft); max-width:480px; margin:0 auto 44px; }
-  .hero-actions{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:70px;}
-  .hero-stats{ display:flex; gap:0; border-top:1px solid var(--line); padding-top:34px; width:100%; max-width:640px; }
-  .hero-stats div{ flex:1; text-align:center; border-left:1px solid var(--line); }
-  .hero-stats div:first-child{ border-left:none; }
-  .hero-stats .num{ font-family:'Cormorant Garamond',serif; font-size:34px; color:var(--accent-deep); font-weight:600; line-height:1; }
-  .hero-stats .label{ font-size:11px; color:var(--ink-soft); letter-spacing:.05em; margin-top:8px; }
-  .scroll-cue{ position:absolute; bottom:26px; left:50%; transform:translateX(-50%); font-size:10px; letter-spacing:.25em; color:var(--ink-soft); writing-mode:vertical-rl; display:flex; align-items:center; gap:10px; }
-  .scroll-cue::after{ content:""; width:1px; height:38px; background:var(--ink-soft); display:block; animation:cue 1.8s ease-in-out infinite; }
-  @keyframes cue{ 0%,100%{ transform:scaleY(.4); opacity:.4;} 50%{ transform:scaleY(1); opacity:1;} }
+  .hero-actions{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:20px;}
   .marquee{ background:var(--dark); color:var(--cream); overflow:hidden; white-space:nowrap; padding:18px 0; }
   .marquee-track{ display:inline-block; animation:scroll-left 26s linear infinite; }
   .marquee-track span{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; letter-spacing:.04em; padding:0 28px; opacity:.9; }
@@ -82,16 +98,17 @@
   .section-head p{ color:var(--ink-soft); font-size:14.5px; margin-top:16px; }
   section.dark .section-head p{ color:#E8C9D6; }
   .concept{ display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center; }
-  .concept-visual{ aspect-ratio:4/5; border:1px solid var(--line); position:relative; overflow:hidden; border-radius:20px; background-color:#FFDCE4; background-size:cover; background-position:center; display:flex; align-items:flex-end; justify-content:center; }
-  .concept-visual::after{ content:""; position:absolute; inset:0; background:linear-gradient(0deg, rgba(61,34,51,.55) 0%, transparent 45%); }
-  .concept-visual .cap{ position:relative; z-index:1; color:#fff; font-size:12px; letter-spacing:.05em; padding:20px; text-align:center; }
-  .concept-visual::before{ content:""; position:absolute; inset:14px; border:1px solid rgba(255,255,255,.5); border-radius:12px; z-index:1; pointer-events:none; }
+  .concept-visual{ aspect-ratio:4/5; border:1px solid var(--line); position:relative; overflow:hidden; border-radius:20px; background-color:#FFDCE4; background-size:cover; background-position:center; filter:brightness(1.18) saturate(1.08) contrast(1.02); display:flex; align-items:flex-end; justify-content:center; transition:transform .6s cubic-bezier(.2,.7,.3,1); }
+  .concept-visual:hover{ transform:scale(1.02); }
+  .concept-visual::after{ content:""; position:absolute; inset:0; background:linear-gradient(0deg, rgba(61,34,51,.32) 0%, transparent 55%); }
+  .concept-visual .cap{ position:relative; z-index:1; color:#fff; font-size:12px; letter-spacing:.05em; padding:20px; text-align:center; text-shadow:0 1px 6px rgba(0,0,0,.35); }
+  .concept-visual::before{ content:""; position:absolute; inset:14px; border:1px solid rgba(255,255,255,.6); border-radius:12px; z-index:1; pointer-events:none; }
   .concept-text h2{ font-size:26px; margin-bottom:24px; line-height:1.7; }
   .concept-text p{ color:var(--ink-soft); font-size:15px; margin-bottom:18px; }
   .concept-sign{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; color:var(--accent-deep); margin-top:26px; }
   .features{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:18px; overflow:hidden; }
-  .feature{ background:var(--card); text-align:center; padding:52px 28px; transition:background .3s ease; position:relative; }
-  .feature:hover{ background:var(--bg-alt); }
+  .feature{ background:var(--card); text-align:center; padding:52px 28px; transition:background .3s ease, transform .3s ease; position:relative; }
+  .feature:hover{ background:var(--bg-alt); transform:translateY(-6px); }
   .feature:hover .num{ text-shadow:0 0 22px var(--glow); }
   .feature .num{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:38px; color:var(--accent); margin-bottom:18px; }
   .feature h3{ font-size:16px; margin-bottom:12px; font-weight:600; letter-spacing:.03em; }
@@ -207,7 +224,7 @@
   .faq-item.open .faq-a{ max-height:220px; }
   .faq-a p{ padding:0 4px 24px; font-size:14px; color:var(--ink-soft); }
   @media (max-width:860px){
-    .nav-links, .hero-stats .label{ display:none; }
+    .nav-links{ display:none; }
     .burger{ display:flex; }
     .concept, .access, .stylist{ grid-template-columns:1fr; }
     .features{ grid-template-columns:1fr 1fr; }
@@ -223,6 +240,7 @@
 </style>
 </head>
 <body>
+<div class="scroll-progress" id="scrollProgress"></div>
 <header id="siteHeader">
   <div class="wrap">
     <div class="logo"><span class="en">Rêve</span><span>吉祥寺</span></div>
@@ -241,6 +259,7 @@
   </div>
 </header>
 <section class="hero">
+  <div class="hero-parallax" id="heroParallax">
   <svg class="hero-illust" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
     <path class="l1" d="M20,100 C90,20 310,20 380,100 C310,150 90,150 20,100 Z"/>
     <path class="l2" d="M150,86 a30,26 0 1,0 60,0 a30,26 0 1,0 -60,0"/>
@@ -260,13 +279,7 @@
     <a class="btn btn-solid" href="https://www.instagram.com/reve_kichijoji/" target="_blank" rel="noopener">Instagram DMで予約する</a>
     <a class="btn btn-line" href="#menu">メニューを見る</a>
   </div>
-  <div class="hero-stats reveal in">
-    <div><div class="num en count-up" data-target="500" data-suffix="+">0</div><div class="label">ご来店実績（仮）</div></div>
-    <div><div class="num en count-up" data-target="4.9" data-decimal="1">0</div><div class="label">クチコミ評価（仮）</div></div>
-    <div><div class="num en count-up" data-target="98" data-suffix="%">0</div><div class="label">リピート率（仮）</div></div>
-    <div><div class="num en count-up" data-target="3" data-suffix="年">0</div><div class="label">吉祥寺で営業（仮）</div></div>
   </div>
-  <div class="scroll-cue">SCROLL</div>
 </section>
 <div class="marquee">
   <div class="marquee-track">
@@ -276,10 +289,10 @@
 </div>
 <section id="concept">
   <div class="wrap concept">
-    <div class="concept-visual reveal" style="background-image:url('https://images.unsplash.com/photo-1781450090585-1a511b7066d9?fm=jpg&amp;q=80&amp;w=1200&amp;auto=format&amp;fit=crop');">
+    <div class="concept-visual reveal-left" style="background-image:url('https://images.unsplash.com/photo-1781450090585-1a511b7066d9?fm=jpg&amp;q=80&amp;w=1200&amp;auto=format&amp;fit=crop');">
       <div class="cap">SALON VILLAGE 吉祥寺 内・完全個室スペース（イメージ）</div>
     </div>
-    <div class="concept-text reveal reveal-1">
+    <div class="concept-text reveal-right">
       <div class="eyebrow">Concept</div>
       <h2 class="serif">"盛る"のではなく、<br>"整える"デザインを</h2>
       <p>骨格や瞳の形、なりたい印象を丁寧にカウンセリングした上で、お一人おひとりに合わせたデザインをご提案しています。</p>
@@ -325,14 +338,14 @@
       <p>※フリー素材によるイメージ写真です。実際の症例写真をご用意でき次第、差し替えてご利用ください。</p>
     </div>
     <div class="gallery reveal reveal-1">
-      <div class="gcard g1" style="--bgimg:url('https://images.pexels.com/photos/3373735/pexels-photo-3373735.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200');"><div class="tag">Natural Volume<small>ナチュラルボリューム</small></div></div>
-      <div class="gcard g2" style="--bgimg:url('https://images.pexels.com/photos/9929038/pexels-photo-9929038.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200');"><div class="tag">Parisian Lift<small>まつげパーマ</small></div></div>
-      <div class="gcard g3" style="--bgimg:url('https://images.pexels.com/photos/3373743/pexels-photo-3373743.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800');"><div class="tag">Brow Lamination<small>眉毛ラミネーション</small></div></div>
-      <div class="gcard g4" style="--bgimg:url('https://images.pexels.com/photos/3373723/pexels-photo-3373723.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800');"><div class="tag">Tint &amp; Design<small>眉ティント</small></div></div>
-      <div class="gcard g5" style="--bgimg:url('https://images.pexels.com/photos/9929043/pexels-photo-9929043.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200');"><div class="tag">Cat-eye Line<small>キャットライン</small></div></div>
-      <div class="gcard g6" style="--bgimg:url('https://images.pexels.com/photos/3373729/pexels-photo-3373729.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200');"><div class="tag">Soft Brown<small>ソフトブラウン</small></div></div>
-      <div class="gcard g7" style="--bgimg:url('https://images.pexels.com/photos/5046577/pexels-photo-5046577.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200');"><div class="tag">Doll Eye<small>ドーリーライン</small></div></div>
-      <div class="gcard g8" style="--bgimg:url('https://images.pexels.com/photos/6654168/pexels-photo-6654168.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200');"><div class="tag">Ash Gray<small>アッシュグレー</small></div></div>
+      <div class="gcard g1 reveal-scale" style="--bgimg:url('https://images.pexels.com/photos/3373735/pexels-photo-3373735.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200');"><div class="tag">Natural Volume<small>ナチュラルボリューム</small></div></div>
+      <div class="gcard g2 reveal-scale" style="--bgimg:url('https://images.pexels.com/photos/9929038/pexels-photo-9929038.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200');"><div class="tag">Parisian Lift<small>まつげパーマ</small></div></div>
+      <div class="gcard g3 reveal-scale" style="--bgimg:url('https://images.pexels.com/photos/3373743/pexels-photo-3373743.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800');"><div class="tag">Brow Lamination<small>眉毛ラミネーション</small></div></div>
+      <div class="gcard g4 reveal-scale" style="--bgimg:url('https://images.pexels.com/photos/3373723/pexels-photo-3373723.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800');"><div class="tag">Tint &amp; Design<small>眉ティント</small></div></div>
+      <div class="gcard g5 reveal-scale" style="--bgimg:url('https://images.pexels.com/photos/9929043/pexels-photo-9929043.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200');"><div class="tag">Cat-eye Line<small>キャットライン</small></div></div>
+      <div class="gcard g6 reveal-scale" style="--bgimg:url('https://images.pexels.com/photos/3373729/pexels-photo-3373729.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200');"><div class="tag">Soft Brown<small>ソフトブラウン</small></div></div>
+      <div class="gcard g7 reveal-scale" style="--bgimg:url('https://images.pexels.com/photos/5046577/pexels-photo-5046577.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200');"><div class="tag">Doll Eye<small>ドーリーライン</small></div></div>
+      <div class="gcard g8 reveal-scale" style="--bgimg:url('https://images.pexels.com/photos/6654168/pexels-photo-6654168.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200');"><div class="tag">Ash Gray<small>アッシュグレー</small></div></div>
     </div>
   </div>
 </section>
@@ -422,8 +435,8 @@
       <p>指名でのご予約も承っています。普段の雰囲気はInstagramをご覧ください。</p>
     </div>
     <div class="stylist">
-      <div class="stylist-photo reveal"><span>R</span></div>
-      <div class="stylist-bio reveal reveal-1">
+      <div class="stylist-photo reveal-left"><span>R</span></div>
+      <div class="stylist-bio reveal-right">
         <div class="role">Owner / Stylist</div>
         <h3 class="serif">〇〇 〇〇（仮）</h3>
         <p>大手サロンでの勤務を経て、吉祥寺で独立。「その人らしさを引き立てる」デザインを信条に、日々技術を磨いています。</p>
@@ -564,9 +577,21 @@
 </a>
 <script>
   const header = document.getElementById('siteHeader');
-  window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 40); });
+  const scrollProgress = document.getElementById('scrollProgress');
+  const heroParallax = document.getElementById('heroParallax');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docH > 0 ? (window.scrollY / docH) * 100 : 0;
+    scrollProgress.style.width = pct + '%';
+    if (heroParallax) {
+      const y = Math.min(window.scrollY, 600);
+      heroParallax.style.transform = 'translateY(' + (y * 0.25) + 'px)';
+      heroParallax.style.opacity = String(Math.max(1 - y / 500, 0));
+    }
+  });
   const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }); }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => io.observe(el));
   document.querySelectorAll('.menu-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
@@ -575,28 +600,6 @@
       document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
     });
   });
-  const counters = document.querySelectorAll('.count-up');
-  const counterIO = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      const target = parseFloat(el.dataset.target);
-      const decimal = parseInt(el.dataset.decimal || '0');
-      const suffix = el.dataset.suffix || '';
-      const duration = 1400;
-      const start = performance.now();
-      function tick(now){
-        const p = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - p, 3);
-        const val = target * eased;
-        el.textContent = (decimal ? val.toFixed(decimal) : Math.round(val)) + suffix;
-        if (p < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-      counterIO.unobserve(el);
-    });
-  }, { threshold: 0.6 });
-  counters.forEach(el => counterIO.observe(el));
   const floatCta = document.getElementById('floatCta');
   const heroEl = document.querySelector('.hero');
   window.addEventListener('scroll', () => {
