@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rêve Kichijoji｜吉祥寺 まつげ・眉毛サロン</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg: #FFFAF6; --bg-alt: #FFF0EC; --card: #FFFFFF; --ink: #3D2B2A; --ink-soft: #8A716E;
@@ -82,9 +82,10 @@
   .section-head p{ color:var(--ink-soft); font-size:14.5px; margin-top:16px; }
   section.dark .section-head p{ color:#E8C9D6; }
   .concept{ display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center; }
-  .concept-visual{ aspect-ratio:4/5; border:1px solid var(--line); position:relative; overflow:hidden; border-radius:20px; background:linear-gradient(160deg, #FFEDF1 0%, #FFDCE4 55%, #FFC9D6 100%); display:flex; align-items:center; justify-content:center; }
-  .concept-visual svg{ width:46%; opacity:.85; }
-  .concept-visual::before{ content:""; position:absolute; inset:14px; border:1px solid rgba(225,76,116,.3); border-radius:12px; }
+  .concept-visual{ aspect-ratio:4/5; border:1px solid var(--line); position:relative; overflow:hidden; border-radius:20px; background-color:#FFDCE4; background-size:cover; background-position:center; display:flex; align-items:flex-end; justify-content:center; }
+  .concept-visual::after{ content:""; position:absolute; inset:0; background:linear-gradient(0deg, rgba(61,34,51,.55) 0%, transparent 45%); }
+  .concept-visual .cap{ position:relative; z-index:1; color:#fff; font-size:12px; letter-spacing:.05em; padding:20px; text-align:center; }
+  .concept-visual::before{ content:""; position:absolute; inset:14px; border:1px solid rgba(255,255,255,.5); border-radius:12px; z-index:1; pointer-events:none; }
   .concept-text h2{ font-size:26px; margin-bottom:24px; line-height:1.7; }
   .concept-text p{ color:var(--ink-soft); font-size:15px; margin-bottom:18px; }
   .concept-sign{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; color:var(--accent-deep); margin-top:26px; }
@@ -98,19 +99,19 @@
   .gallery{ display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:130px; gap:14px; }
   .gcard{ position:relative; overflow:hidden; border-radius:14px; display:flex; align-items:flex-end; padding:18px; color:#fff; isolation:isolate; transition:transform .45s cubic-bezier(.2,.7,.3,1), box-shadow .45s ease; }
   .gcard:hover{ transform:translateY(-6px) scale(1.02); box-shadow:0 22px 40px -16px rgba(225,76,116,.4); z-index:2; }
-  .gcard::before{ content:""; position:absolute; inset:0; z-index:-1; transition:transform .6s cubic-bezier(.2,.7,.3,1); }
+  .gcard::before{ content:""; position:absolute; inset:0; z-index:-1; background-color:#FFDCE4; background-image:var(--bgimg); background-size:cover; background-position:center; transition:transform .6s cubic-bezier(.2,.7,.3,1); }
   .gcard:hover::before{ transform:scale(1.08); }
-  .gcard::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, transparent 40%, rgba(61,34,51,.65) 100%); z-index:-1; }
+  .gcard::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, transparent 40%, rgba(61,34,51,.72) 100%); z-index:-1; }
   .gcard .tag{ font-size:12px; letter-spacing:.06em; font-weight:500; }
   .gcard .tag small{ display:block; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px; opacity:.9; margin-top:2px; }
-  .g1{ grid-column:span 2; grid-row:span 2; background:linear-gradient(135deg,#FFB6C1,#FF6F91); }
-  .g2{ grid-column:span 2; background:linear-gradient(135deg,#FFD9A0,#FFB347); }
-  .g3{ grid-column:span 1; background:linear-gradient(135deg,#FF6F91,#E14C74); }
-  .g4{ grid-column:span 1; background:linear-gradient(135deg,#FFE8B8,#FFC2CE); }
-  .g5{ grid-column:span 2; background:linear-gradient(135deg,#E14C74,#8A2E52); }
-  .g6{ grid-column:span 2; grid-row:span 1; background:linear-gradient(135deg,#FFC2CE,#FFE8B8); }
-  .g7{ grid-column:span 2; background:linear-gradient(135deg,#FFB347,#FFD9A0); }
-  .g8{ grid-column:span 2; background:linear-gradient(135deg,#8A2E52,#4A2C39); }
+  .g1{ grid-column:span 2; grid-row:span 2; }
+  .g2{ grid-column:span 2; }
+  .g3{ grid-column:span 1; }
+  .g4{ grid-column:span 1; }
+  .g5{ grid-column:span 2; }
+  .g6{ grid-column:span 2; grid-row:span 1; }
+  .g7{ grid-column:span 2; }
+  .g8{ grid-column:span 2; }
   .menu-combo{ text-align:center; font-size:13px; color:var(--accent-deep); background:var(--bg-alt); border:1px dashed var(--accent); border-radius:999px; padding:10px 22px; width:fit-content; margin:0 auto 40px; }
   .menu-tabs{ display:flex; justify-content:center; gap:8px; margin-bottom:48px; }
   .menu-tab{ padding:11px 30px; font-size:13px; letter-spacing:.08em; border:1.5px solid var(--line); cursor:pointer; background:var(--card); transition:all .3s ease; border-radius:999px; }
@@ -275,11 +276,8 @@
 </div>
 <section id="concept">
   <div class="wrap concept">
-    <div class="concept-visual reveal">
-      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20,100 C60,50 140,50 180,100 C140,140 60,140 20,100 Z" fill="none" stroke="#E14C74" stroke-width="1.6"/>
-        <circle cx="100" cy="100" r="18" fill="none" stroke="#E14C74" stroke-width="1.6"/>
-      </svg>
+    <div class="concept-visual reveal" style="background-image:url('https://images.unsplash.com/photo-1781450090585-1a511b7066d9?fm=jpg&amp;q=80&amp;w=1200&amp;auto=format&amp;fit=crop');">
+      <div class="cap">SALON VILLAGE 吉祥寺 内・完全個室スペース（イメージ）</div>
     </div>
     <div class="concept-text reveal reveal-1">
       <div class="eyebrow">Concept</div>
@@ -304,22 +302,37 @@
     </div>
   </div>
 </section>
+<section id="target">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">For You</div>
+      <h2 class="serif glow">こんな方におすすめです</h2>
+      <p>Rêve吉祥寺は、こんな悩みや価値観をお持ちの方に選ばれています。</p>
+    </div>
+    <div class="benefits-grid reveal reveal-1">
+      <div class="benefit-card"><div class="icon">⏰</div><h3>平日のメイク時間を短縮したい</h3><p>20〜30代の働く女性を中心に、毎朝のメイク時間を減らしたいという理由でご来店いただいています。</p></div>
+      <div class="benefit-card"><div class="icon">🌿</div><h3>自まつげ・自眉を活かしたい</h3><p>「盛りすぎない」ナチュラル志向の方に人気です。地まつげ・地眉の魅力を活かすデザインをご提案します。</p></div>
+      <div class="benefit-card"><div class="icon">🤍</div><h3>急かされる接客が苦手</h3><p>丁寧なカウンセリングを求める方、他店で急かされた経験がある方に安心してお選びいただいています。</p></div>
+      <div class="benefit-card"><div class="icon">🚪</div><h3>プライベートな空間で過ごしたい</h3><p>周りの目を気にせず、完全個室でゆったり施術を受けたい方に選ばれています。</p></div>
+    </div>
+  </div>
+</section>
 <section id="gallery">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">Gallery</div>
       <h2 class="serif">Before / After Story</h2>
-      <p>※実際の症例写真に差し替えてご利用ください（現在はイメージカラーで表示）。</p>
+      <p>※フリー素材によるイメージ写真です。実際の症例写真をご用意でき次第、差し替えてご利用ください。</p>
     </div>
     <div class="gallery reveal reveal-1">
-      <div class="gcard g1"><div class="tag">Natural Volume<small>ナチュラルボリューム</small></div></div>
-      <div class="gcard g2"><div class="tag">Parisian Lift<small>まつげパーマ</small></div></div>
-      <div class="gcard g3"><div class="tag">Brow Lamination<small>眉毛ラミネーション</small></div></div>
-      <div class="gcard g4"><div class="tag">Tint &amp; Design<small>眉ティント</small></div></div>
-      <div class="gcard g5"><div class="tag">Cat-eye Line<small>キャットライン</small></div></div>
-      <div class="gcard g6"><div class="tag">Soft Brown<small>ソフトブラウン</small></div></div>
-      <div class="gcard g7"><div class="tag">Doll Eye<small>ドーリーライン</small></div></div>
-      <div class="gcard g8"><div class="tag">Ash Gray<small>アッシュグレー</small></div></div>
+      <div class="gcard g1" style="--bgimg:url('https://images.pexels.com/photos/3373735/pexels-photo-3373735.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200');"><div class="tag">Natural Volume<small>ナチュラルボリューム</small></div></div>
+      <div class="gcard g2" style="--bgimg:url('https://images.pexels.com/photos/9929038/pexels-photo-9929038.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200');"><div class="tag">Parisian Lift<small>まつげパーマ</small></div></div>
+      <div class="gcard g3" style="--bgimg:url('https://images.pexels.com/photos/3373743/pexels-photo-3373743.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800');"><div class="tag">Brow Lamination<small>眉毛ラミネーション</small></div></div>
+      <div class="gcard g4" style="--bgimg:url('https://images.pexels.com/photos/3373723/pexels-photo-3373723.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800');"><div class="tag">Tint &amp; Design<small>眉ティント</small></div></div>
+      <div class="gcard g5" style="--bgimg:url('https://images.pexels.com/photos/9929043/pexels-photo-9929043.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200');"><div class="tag">Cat-eye Line<small>キャットライン</small></div></div>
+      <div class="gcard g6" style="--bgimg:url('https://images.pexels.com/photos/3373729/pexels-photo-3373729.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200');"><div class="tag">Soft Brown<small>ソフトブラウン</small></div></div>
+      <div class="gcard g7" style="--bgimg:url('https://images.pexels.com/photos/5046577/pexels-photo-5046577.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200');"><div class="tag">Doll Eye<small>ドーリーライン</small></div></div>
+      <div class="gcard g8" style="--bgimg:url('https://images.pexels.com/photos/6654168/pexels-photo-6654168.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200');"><div class="tag">Ash Gray<small>アッシュグレー</small></div></div>
     </div>
   </div>
 </section>
@@ -338,19 +351,19 @@
     </div>
     <div class="menu-panel active reveal reveal-1" id="panel-lash">
       <div class="menu-row"><span class="name">シングルラッシュ<small>100本／ナチュラルな束感</small></span><span class="price en">¥6,000</span></div>
-      <div class="menu-row"><span class="name">ボリュームラッシュ<small>120本／3D〜6D・ふんわり束感</small></span><span class="price en">¥8,500</span></div>
+      <div class="menu-row"><span class="name">ボリュームラッシュ<small>120本／3D〜6D・ふんわり束感</small></span><span class="price en">¥9,000</span></div>
       <div class="menu-row"><span class="name">まつげパーマ<small>パリジェンヌラッシュリフト</small></span><span class="price en">¥7,000</span></div>
       <div class="menu-row"><span class="name">下まつげエクステ<small>上まつげメニューに追加</small></span><span class="price en">+¥1,500</span></div>
       <div class="menu-note">初回オフ無料（他店オフは+¥1,000）</div>
-      <div class="menu-source">※価格は東京都内相場（まつげエクステ 100本 約5,500〜6,500円、まつげパーマ 約6,000〜10,000円）を参考に設定した仮の金額です。</div>
+      <div class="menu-source">※東京都内サロンの公開料金（まつげエクステ100本 約5,500〜6,500円、ボリュームラッシュ120本 約8,000〜10,000円、まつげパーマ 約6,000〜10,000円）を複数調査した上で設定した参考価格です。実際の価格ではありません。</div>
     </div>
     <div class="menu-panel" id="panel-brow">
-      <div class="menu-row"><span class="name">眉毛サロン<small>デザイン＋ワックス＋眉ティント</small></span><span class="price en">¥5,500</span></div>
-      <div class="menu-row"><span class="name">眉毛ワックス<small>単品</small></span><span class="price en">¥3,000</span></div>
+      <div class="menu-row"><span class="name">眉毛サロン<small>デザイン＋ワックス＋眉ティント</small></span><span class="price en">¥5,800</span></div>
+      <div class="menu-row"><span class="name">眉毛ワックス<small>単品</small></span><span class="price en">¥3,800</span></div>
       <div class="menu-row"><span class="name">眉ティント<small>単品／持続約1〜2週間</small></span><span class="price en">¥3,500</span></div>
       <div class="menu-row"><span class="name">眉毛ラミネーション<small>眉毛パーマ・持続約1ヶ月</small></span><span class="price en">¥7,000</span></div>
       <div class="menu-note">初めての方はカウンセリング込み</div>
-      <div class="menu-source">※価格は東京都内相場（眉毛サロン中央値 約4,000〜6,000円、眉毛パーマ 約6,000〜9,000円）を参考に設定した仮の金額です。</div>
+      <div class="menu-source">※吉祥寺エリアを含む東京都内サロンの公開料金（眉毛ワックス 約3,800〜5,500円、ワックス+カラーセット 約6,000円前後、眉毛パーマ 約6,000〜9,000円）を複数調査した上で設定した参考価格です。実際の価格ではありません。</div>
     </div>
   </div>
 </section>
@@ -522,6 +535,7 @@
       <div>
         <h4>MENU</h4>
         <a href="#concept">コンセプト</a>
+        <a href="#target">こんな方に</a>
         <a href="#gallery">ギャラリー</a>
         <a href="#menu">メニュー・料金</a>
         <a href="#benefits">特典・紹介制度</a>
@@ -602,7 +616,7 @@
     if (mobileNav) { mobileNav.remove(); mobileNav = null; return; }
     mobileNav = document.createElement('div');
     mobileNav.style.cssText = 'position:fixed;top:64px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);padding:20px 28px;display:flex;flex-direction:column;gap:16px;z-index:99;';
-    [['concept','コンセプト'],['menu','メニュー'],['benefits','特典'],['flow','ご予約の流れ'],['staff','スタッフ'],['voice','口コミ'],['faq','FAQ'],['access','アクセス']].forEach(([id,label]) => {
+    [['concept','コンセプト'],['target','こんな方に'],['menu','メニュー'],['benefits','特典'],['flow','ご予約の流れ'],['staff','スタッフ'],['voice','口コミ'],['faq','FAQ'],['access','アクセス']].forEach(([id,label]) => {
       const a = document.createElement('a');
       a.href = '#' + id;
       a.textContent = label;
