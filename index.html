@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rêve Kichijoji｜吉祥寺 まつげ・眉毛サロン</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FAF6EF; --bg-alt: #F2E9DC; --card: #FFFFFF; --ink: #241E1A; --ink-soft: #786A5D;
+    --accent: #B98A63; --accent-deep: #8C6239; --line: #E6D9C6; --dark: #241C17; --dark-2: #322619; --cream: #F7F0E4;
+    --gold1: #E8C89A; --gold2: #B98A63; --gold3: #8C6239; --glow: rgba(185,138,99,.55);
+  }
+  .gradient-text{ background:linear-gradient(100deg, var(--gold3), var(--gold1) 45%, var(--accent-deep) 90%); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ font-family:'Noto Sans JP', sans-serif; background:var(--bg); color:var(--ink); line-height:1.9; letter-spacing:0.02em; overflow-x:hidden; }
+  h1,h2,h3,.serif{ font-family:'Shippori Mincho', serif; }
+  .en{ font-family:'Cormorant Garamond', serif; font-style:italic; }
+  a{ color:inherit; text-decoration:none; }
+  img,svg{ display:block; max-width:100%; }
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 28px; }
+  ::selection{ background:var(--accent); color:#fff; }
+  .reveal{ opacity:0; transform:translateY(28px); transition:opacity .9s cubic-bezier(.16,.84,.44,1), transform .9s cubic-bezier(.16,.84,.44,1); }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+  .reveal-1{ transition-delay:.08s; } .reveal-2{ transition-delay:.18s; } .reveal-3{ transition-delay:.28s; }
+  header{ position:fixed; top:0; left:0; right:0; z-index:100; padding:26px 0; transition:padding .35s ease, background .35s ease, box-shadow .35s ease; }
+  header .wrap{ display:flex; align-items:center; justify-content:space-between; }
+  header.scrolled{ padding:14px 0; background:rgba(250,246,239,0.9); backdrop-filter:blur(10px); box-shadow:0 1px 0 var(--line); }
+  .logo{ font-size:21px; font-weight:600; letter-spacing:0.1em; display:flex; align-items:baseline; gap:8px;}
+  .logo .en{ font-size:24px; }
+  .nav-links{ display:flex; gap:32px; font-size:12px; letter-spacing:0.05em; }
+  .nav-links a{ position:relative; color:var(--ink); padding-bottom:4px; display:flex; flex-direction:column; align-items:center; gap:3px; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px; }
+  .nav-links a .ja{ font-family:'Noto Sans JP',sans-serif; font-style:normal; font-size:9.5px; color:var(--ink-soft); letter-spacing:.08em; }
+  .nav-links a::after{ content:""; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--accent-deep); transition:width .3s ease; }
+  .nav-links a:hover::after{ width:100%; }
+  .header-actions{ display:flex; align-items:center; gap:18px; }
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:13px 30px; font-size:13px; letter-spacing:0.08em; border-radius:1px; transition:transform .3s ease, box-shadow .3s ease, background .3s ease, color .3s ease; }
+  .btn-solid{ background:var(--ink); color:#fff; }
+  .btn-solid:hover{ background:var(--accent-deep); transform:translateY(-2px); box-shadow:0 10px 24px -8px rgba(140,98,57,.55); }
+  .btn-line{ border:1px solid var(--ink); color:var(--ink); }
+  .btn-line:hover{ background:var(--ink); color:#fff; transform:translateY(-2px); }
+  .btn-cream{ background:var(--cream); color:var(--dark); }
+  .btn-cream:hover{ background:#fff; transform:translateY(-2px); }
+  .burger{ display:none; flex-direction:column; gap:5px; cursor:pointer; }
+  .burger span{ width:22px; height:1px; background:var(--ink); display:block; }
+  .hero{ position:relative; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:140px 0 60px; background: radial-gradient(ellipse at 15% 15%, rgba(185,138,99,0.16), transparent 50%), radial-gradient(ellipse at 85% 25%, rgba(185,138,99,0.12), transparent 45%), var(--bg); overflow:hidden; }
+  .hero-illust{ width:min(480px, 70vw); margin:0 auto 8px; opacity:.9; }
+  .hero-illust path, .hero-illust line{ fill:none; stroke:var(--accent-deep); stroke-width:1.4; stroke-linecap:round; stroke-dasharray:900; stroke-dashoffset:900; animation:draw 2.6s cubic-bezier(.4,.1,.2,1) forwards; }
+  .hero-illust .l2{ animation-delay:.15s; } .hero-illust .l3{ animation-delay:.30s; } .hero-illust .l4{ animation-delay:.45s; } .hero-illust .l5{ animation-delay:.60s; } .hero-illust .l6{ animation-delay:.75s; }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  .hero-badge{ display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--line); padding:9px 20px; border-radius:999px; font-size:11.5px; letter-spacing:.04em; color:var(--accent-deep); box-shadow:0 8px 24px -10px rgba(140,98,57,.35); margin-bottom:22px; }
+  .hero-badge span{ font-family:'Cormorant Garamond',serif; font-weight:700; font-size:14px; color:var(--ink); }
+  .hero .eyebrow{ font-size:12px; letter-spacing:0.35em; color:var(--accent-deep); text-transform:uppercase; margin:18px 0 22px; }
+  .hero h1{ font-size:clamp(32px, 5.2vw, 56px); font-weight:600; line-height:1.55; margin-bottom:24px; }
+  .hero h1 .en{ font-size:1.15em; color:var(--accent-deep); }
+  .hero p.sub{ font-size:15px; color:var(--ink-soft); max-width:480px; margin:0 auto 44px; }
+  .hero-actions{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:70px;}
+  .hero-stats{ display:flex; gap:0; border-top:1px solid var(--line); padding-top:34px; width:100%; max-width:640px; }
+  .hero-stats div{ flex:1; text-align:center; border-left:1px solid var(--line); }
+  .hero-stats div:first-child{ border-left:none; }
+  .hero-stats .num{ font-family:'Cormorant Garamond',serif; font-size:34px; color:var(--accent-deep); font-weight:600; line-height:1; }
+  .hero-stats .label{ font-size:11px; color:var(--ink-soft); letter-spacing:.05em; margin-top:8px; }
+  .scroll-cue{ position:absolute; bottom:26px; left:50%; transform:translateX(-50%); font-size:10px; letter-spacing:.25em; color:var(--ink-soft); writing-mode:vertical-rl; display:flex; align-items:center; gap:10px; }
+  .scroll-cue::after{ content:""; width:1px; height:38px; background:var(--ink-soft); display:block; animation:cue 1.8s ease-in-out infinite; }
+  @keyframes cue{ 0%,100%{ transform:scaleY(.4); opacity:.4;} 50%{ transform:scaleY(1); opacity:1;} }
+  .marquee{ background:var(--dark); color:var(--cream); overflow:hidden; white-space:nowrap; padding:18px 0; }
+  .marquee-track{ display:inline-block; animation:scroll-left 26s linear infinite; }
+  .marquee-track span{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; letter-spacing:.04em; padding:0 28px; opacity:.9; }
+  .marquee-track span.dot{ color:var(--accent); font-style:normal; }
+  @keyframes scroll-left{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
+  section{ padding:120px 0; }
+  section.alt{ background:var(--bg-alt); }
+  section.dark{ background:var(--dark); color:var(--cream); }
+  .section-head{ text-align:center; margin-bottom:64px; }
+  .section-head .eyebrow{ font-size:12px; letter-spacing:0.3em; color:var(--accent-deep); text-transform:uppercase; margin-bottom:16px; }
+  section.dark .section-head .eyebrow{ color:var(--accent); }
+  .section-head h2{ font-size:clamp(24px,3.4vw,34px); font-weight:600; }
+  .section-head p{ color:var(--ink-soft); font-size:13.5px; margin-top:16px; }
+  section.dark .section-head p{ color:#C9BBA9; }
+  .concept{ display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center; }
+  .concept-visual{ aspect-ratio:4/5; border:1px solid var(--line); position:relative; overflow:hidden; background:linear-gradient(160deg, #F1E4D2 0%, #EAD8C0 55%, #E4CDAE 100%); display:flex; align-items:center; justify-content:center; }
+  .concept-visual svg{ width:46%; opacity:.85; }
+  .concept-visual::before{ content:""; position:absolute; inset:14px; border:1px solid rgba(140,98,57,.35); }
+  .concept-text h2{ font-size:26px; margin-bottom:24px; line-height:1.7; }
+  .concept-text p{ color:var(--ink-soft); font-size:14.5px; margin-bottom:18px; }
+  .concept-sign{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; color:var(--accent-deep); margin-top:26px; }
+  .features{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+  .feature{ background:var(--bg); text-align:center; padding:52px 28px; transition:background .3s ease; position:relative; }
+  .feature:hover{ background:var(--card); }
+  .feature:hover .num{ text-shadow:0 0 22px var(--glow); }
+  .feature .num{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:38px; color:var(--accent); margin-bottom:18px; }
+  .feature h3{ font-size:16px; margin-bottom:12px; font-weight:600; letter-spacing:.03em; }
+  .feature p{ font-size:13px; color:var(--ink-soft); }
+  .gallery{ display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:130px; gap:14px; }
+  .gcard{ position:relative; overflow:hidden; border-radius:2px; display:flex; align-items:flex-end; padding:18px; color:#fff; isolation:isolate; transition:transform .45s cubic-bezier(.2,.7,.3,1), box-shadow .45s ease; }
+  .gcard:hover{ transform:translateY(-6px) scale(1.02); box-shadow:0 22px 40px -16px rgba(36,28,23,.45); z-index:2; }
+  .gcard::before{ content:""; position:absolute; inset:0; z-index:-1; transition:transform .6s cubic-bezier(.2,.7,.3,1); }
+  .gcard:hover::before{ transform:scale(1.08); }
+  .gcard::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, transparent 40%, rgba(20,14,10,.68) 100%); z-index:-1; }
+  .gcard .tag{ font-size:12px; letter-spacing:.06em; font-weight:500; }
+  .gcard .tag small{ display:block; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px; opacity:.85; margin-top:2px; }
+  .g1{ grid-column:span 2; grid-row:span 2; background:linear-gradient(135deg,#C79A72,#8C6239); }
+  .g2{ grid-column:span 2; background:linear-gradient(135deg,#D8C0A0,#B98A63); }
+  .g3{ grid-column:span 1; background:linear-gradient(135deg,#8C6239,#5A3E22); }
+  .g4{ grid-column:span 1; background:linear-gradient(135deg,#E4CDAE,#C79A72); }
+  .g5{ grid-column:span 2; background:linear-gradient(135deg,#5A3E22,#241C17); }
+  .g6{ grid-column:span 2; grid-row:span 1; background:linear-gradient(135deg,#B98A63,#D8C0A0); }
+  .g7{ grid-column:span 2; background:linear-gradient(135deg,#C79A72,#E4CDAE); }
+  .g8{ grid-column:span 2; background:linear-gradient(135deg,#241C17,#5A3E22); }
+  .menu-tabs{ display:flex; justify-content:center; gap:8px; margin-bottom:48px; }
+  .menu-tab{ padding:11px 30px; font-size:13px; letter-spacing:.08em; border:1px solid var(--line); cursor:pointer; background:var(--card); transition:all .3s ease; }
+  .menu-tab.active{ background:var(--ink); color:#fff; border-color:var(--ink); }
+  .menu-panel{ display:none; max-width:640px; margin:0 auto; }
+  .menu-panel.active{ display:block; }
+  .menu-row{ display:flex; justify-content:space-between; align-items:baseline; padding:22px 0; border-bottom:1px solid var(--line); font-size:14.5px; }
+  .menu-row .name{ color:var(--ink); font-weight:500; }
+  .menu-row .name small{ display:block; color:var(--ink-soft); font-size:11.5px; margin-top:5px; font-weight:400; }
+  .menu-row .price{ font-family:'Cormorant Garamond',serif; color:var(--accent-deep); font-size:19px; white-space:nowrap; padding-left:20px; }
+  .menu-note{ font-size:11px; color:var(--ink-soft); margin-top:24px; text-align:center; }
+  .news-list{ max-width:720px; margin:0 auto; border-top:1px solid var(--line); }
+  .news-row{ display:flex; align-items:center; gap:24px; padding:20px 4px; border-bottom:1px solid var(--line); transition:padding-left .3s ease, color .3s ease; }
+  .news-row:hover{ padding-left:12px; color:var(--accent-deep); }
+  .news-date{ font-size:14px; color:var(--ink-soft); white-space:nowrap; width:100px; }
+  .news-tag{ font-size:10.5px; letter-spacing:.05em; border:1px solid var(--accent); color:var(--accent-deep); padding:3px 10px; white-space:nowrap; }
+  .news-title{ font-size:13.5px; }
+  .stylist{ display:grid; grid-template-columns:220px 1fr; gap:56px; align-items:center; max-width:760px; margin:0 auto; }
+  .staff-insta{ display:inline-flex; align-items:center; gap:8px; margin-top:20px; font-size:12.5px; color:var(--accent-deep); border-bottom:1px solid var(--accent-deep); padding-bottom:2px; width:fit-content; }
+  .staff-insta:hover{ color:var(--ink); border-color:var(--ink); }
+  .stylist-photo{ width:220px; height:220px; border-radius:50%; background:conic-gradient(from 210deg, #E4CDAE, #B98A63, #8C6239, #E4CDAE); display:flex; align-items:center; justify-content:center; position:relative; }
+  .stylist-photo::before{ content:""; position:absolute; inset:8px; border-radius:50%; background:var(--bg-alt); }
+  .stylist-photo span{ position:relative; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:52px; color:var(--accent-deep); }
+  .stylist-bio .role{ font-size:12px; letter-spacing:.2em; color:var(--accent-deep); text-transform:uppercase; margin-bottom:10px; }
+  .stylist-bio h3{ font-size:22px; margin-bottom:16px; }
+  .stylist-bio p{ font-size:13.5px; color:var(--ink-soft); margin-bottom:14px; }
+  .stylist-bio .quote{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:17px; color:var(--accent-deep); }
+  .insta-grid{ display:grid; grid-template-columns:repeat(6,1fr); gap:10px; margin-bottom:36px; }
+  .insta-cell{ aspect-ratio:1; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+  .insta-cell svg{ width:34%; opacity:.85; }
+  .insta-cell:nth-child(1){ background:linear-gradient(160deg,#EAD8C0,#C79A72); }
+  .insta-cell:nth-child(2){ background:linear-gradient(160deg,#8C6239,#5A3E22); }
+  .insta-cell:nth-child(3){ background:linear-gradient(160deg,#D8C0A0,#B98A63); }
+  .insta-cell:nth-child(4){ background:linear-gradient(160deg,#5A3E22,#8C6239); }
+  .insta-cell:nth-child(5){ background:linear-gradient(160deg,#C79A72,#EAD8C0); }
+  .insta-cell:nth-child(6){ background:linear-gradient(160deg,#B98A63,#D8C0A0); }
+  .insta-follow{ text-align:center; }
+  .access{ display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+  .access-map{ aspect-ratio:4/3; width:100%; border:1px solid var(--line); filter:grayscale(.3) contrast(1.05); }
+  .access-info dl{ display:grid; grid-template-columns:96px 1fr; row-gap:22px; font-size:14px; }
+  .access-info dt{ color:var(--accent-deep); font-size:11px; letter-spacing:.1em; text-transform:uppercase; }
+  .access-info dd{ color:var(--ink); }
+  .final-cta{ text-align:center; }
+  .final-cta .eyebrow{ color:var(--accent); }
+  .final-cta h2{ font-size:clamp(24px,4vw,38px); margin:14px 0 20px; }
+  .final-cta p{ font-size:14px; color:#C9BBA9; margin-bottom:40px; }
+  footer{ background:var(--dark); color:#C9BBA9; padding:64px 0 32px; }
+  .foot-grid{ display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:40px; padding-bottom:44px; border-bottom:1px solid rgba(255,255,255,.1); }
+  .foot-grid h4{ color:#fff; font-size:13px; letter-spacing:.1em; margin-bottom:18px; }
+  .foot-grid .logo{ color:#fff; margin-bottom:14px; }
+  .foot-grid p{ font-size:12.5px; line-height:2; }
+  .foot-grid a{ display:block; font-size:12.5px; margin-bottom:10px; color:#C9BBA9; }
+  .foot-grid a:hover{ color:#fff; }
+  .foot-bottom{ display:flex; justify-content:space-between; align-items:center; padding-top:28px; font-size:11px; flex-wrap:wrap; gap:12px; }
+  .float-cta{ position:fixed; right:24px; bottom:24px; z-index:90; display:flex; align-items:center; gap:10px; background:var(--ink); color:#fff; padding:16px 24px; border-radius:999px; font-size:13px; letter-spacing:.05em; box-shadow:0 14px 34px -10px rgba(36,28,23,.55); opacity:0; transform:translateY(16px) scale(.9); pointer-events:none; transition:opacity .4s ease, transform .4s ease, background .3s ease; }
+  .float-cta.show{ opacity:1; transform:translateY(0) scale(1); pointer-events:auto; }
+  .float-cta:hover{ background:var(--accent-deep); }
+  .float-cta::before{ content:""; position:absolute; inset:-4px; border-radius:999px; border:1px solid var(--accent); opacity:.6; animation:pulse-ring 2.2s cubic-bezier(.4,0,.6,1) infinite; }
+  @keyframes pulse-ring{ 0%{ transform:scale(1); opacity:.6;} 100%{ transform:scale(1.25); opacity:0;} }
+  .section-head h2.glow{ text-shadow:0 0 40px var(--glow); }
+  .ribbon{ display:inline-flex; align-items:center; gap:10px; background:linear-gradient(100deg, var(--gold3), var(--gold1), var(--accent-deep)); background-size:200% auto; animation:ribbon-shine 4s linear infinite; color:#fff; padding:10px 26px; border-radius:999px; font-size:12.5px; letter-spacing:.06em; margin:0 auto 40px; width:fit-content; box-shadow:0 10px 26px -10px rgba(140,98,57,.6); }
+  @keyframes ribbon-shine{ to{ background-position:200% center; } }
+  .testi-marquee{ overflow:hidden; margin-top:20px; }
+  .testi-track{ display:flex; gap:20px; width:max-content; animation:testi-scroll 34s linear infinite; }
+  .testi-marquee:hover .testi-track{ animation-play-state:paused; }
+  .testi-card{ width:300px; background:var(--card); border:1px solid var(--line); padding:26px 24px; flex-shrink:0; }
+  .testi-card::before{ content:"\201C"; font-family:'Shippori Mincho',serif; font-size:34px; color:var(--accent); display:block; margin-bottom:4px; }
+  .testi-card p{ font-size:13px; color:var(--ink-soft); line-height:1.85; margin-bottom:14px; min-height:88px; }
+  .testi-card .who{ font-size:11px; color:var(--accent-deep); letter-spacing:.05em; }
+  @keyframes testi-scroll{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
+  .faq{ max-width:720px; margin:0 auto; }
+  .faq-item{ border-bottom:1px solid var(--line); }
+  .faq-q{ display:flex; justify-content:space-between; align-items:center; gap:20px; padding:24px 4px; cursor:pointer; font-size:14.5px; font-weight:500; }
+  .faq-q .plus{ font-family:'Cormorant Garamond',serif; font-size:24px; color:var(--accent-deep); transition:transform .35s ease; flex-shrink:0; }
+  .faq-item.open .faq-q .plus{ transform:rotate(135deg); }
+  .faq-a{ max-height:0; overflow:hidden; transition:max-height .4s ease; }
+  .faq-item.open .faq-a{ max-height:200px; }
+  .faq-a p{ padding:0 4px 24px; font-size:13px; color:var(--ink-soft); }
+  @media (max-width:860px){
+    .nav-links, .hero-stats .label{ display:none; }
+    .burger{ display:flex; }
+    .concept, .access, .stylist{ grid-template-columns:1fr; }
+    .features{ grid-template-columns:1fr 1fr; }
+    .gallery{ grid-template-columns:repeat(2,1fr); grid-auto-rows:120px; }
+    .g1,.g5{ grid-column:span 2; }
+    .foot-grid{ grid-template-columns:1fr; }
+    .insta-grid{ grid-template-columns:repeat(3,1fr); }
+    .float-cta span.label-full{ display:none; }
+  }
+</style>
+</head>
+<body>
+<header id="siteHeader">
+  <div class="wrap">
+    <div class="logo"><span class="en">Rêve</span><span>吉祥寺</span></div>
+    <nav class="nav-links">
+      <a href="#concept">Concept<span class="ja">コンセプト</span></a>
+      <a href="#staff">Staff<span class="ja">スタッフ</span></a>
+      <a href="#menu">Menu<span class="ja">メニュー</span></a>
+      <a href="#news">News<span class="ja">お知らせ</span></a>
+      <a href="#voice">Voice<span class="ja">口コミ</span></a>
+      <a href="#access">Access<span class="ja">アクセス</span></a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn-solid" href="https://www.instagram.com/reve_kichijoji/" target="_blank" rel="noopener">ご予約</a>
+      <div class="burger" id="burger"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</header>
+<section class="hero">
+  <svg class="hero-illust" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+    <path class="l1" d="M20,100 C90,20 310,20 380,100 C310,150 90,150 20,100 Z"/>
+    <path class="l2" d="M150,86 a30,26 0 1,0 60,0 a30,26 0 1,0 -60,0"/>
+    <line class="l3" x1="245" y1="70" x2="300" y2="34"/>
+    <line class="l4" x1="255" y1="80" x2="318" y2="58"/>
+    <line class="l5" x1="258" y1="94" x2="322" y2="86"/>
+    <line class="l6" x1="255" y1="106" x2="314" y2="114"/>
+  </svg>
+  <div class="hero-badge reveal in">★★★★★ <span>5.0</span> Googleクチコミ評価（仮）</div>
+  <div class="eyebrow reveal in">Private Lash &amp; Brow Salon</div>
+  <h1 class="reveal in">一本一本に、<span class="en gradient-text">soin</span>を。<br><span class="gradient-text">吉祥寺の隠れ家サロン</span></h1>
+  <p class="sub reveal in">なりたい印象に寄り添うデザインと、丁寧なカウンセリング。<br>吉祥寺駅から徒歩圏内、完全予約制のプライベートサロンです。</p>
+  <div class="hero-actions reveal in">
+    <a class="btn btn-solid" href="https://www.instagram.com/reve_kichijoji/" target="_blank" rel="noopener">Instagram DMで予約する</a>
+    <a class="btn btn-line" href="#menu">メニューを見る</a>
+  </div>
+  <div class="hero-stats reveal in">
+    <div><div class="num en count-up" data-target="500" data-suffix="+">0</div><div class="label">ご来店実績（仮）</div></div>
+    <div><div class="num en count-up" data-target="4.9" data-decimal="1">0</div><div class="label">クチコミ評価（仮）</div></div>
+    <div><div class="num en count-up" data-target="98" data-suffix="%">0</div><div class="label">リピート率（仮）</div></div>
+    <div><div class="num en count-up" data-target="3" data-suffix="年">0</div><div class="label">吉祥寺で営業（仮）</div></div>
+  </div>
+  <div class="scroll-cue">SCROLL</div>
+</section>
+<div class="marquee">
+  <div class="marquee-track">
+    <span>EYELASH<span class="dot">•</span>EYEBROW<span class="dot">•</span>KICHIJOJI<span class="dot">•</span>PRIVATE SALON<span class="dot">•</span>BY APPOINTMENT ONLY<span class="dot">•</span></span>
+    <span>EYELASH<span class="dot">•</span>EYEBROW<span class="dot">•</span>KICHIJOJI<span class="dot">•</span>PRIVATE SALON<span class="dot">•</span>BY APPOINTMENT ONLY<span class="dot">•</span></span>
+  </div>
+</div>
+<section id="concept">
+  <div class="wrap concept">
+    <div class="concept-visual reveal">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20,100 C60,50 140,50 180,100 C140,140 60,140 20,100 Z" fill="none" stroke="#5A3E22" stroke-width="1.6"/>
+        <circle cx="100" cy="100" r="18" fill="none" stroke="#5A3E22" stroke-width="1.6"/>
+      </svg>
+    </div>
+    <div class="concept-text reveal reveal-1">
+      <div class="eyebrow">Concept</div>
+      <h2 class="serif">"盛る"のではなく、<br>"整える"デザインを</h2>
+      <p>骨格や瞳の形、なりたい印象を丁寧にカウンセリングした上で、お一人おひとりに合わせたデザインをご提案しています。</p>
+      <p>派手すぎず、けれど印象は確実に変わる。そんな「毎日を少し自信を持って過ごせる」仕上がりを大切にしています。</p>
+      <div class="concept-sign">— Rêve Kichijoji</div>
+    </div>
+  </div>
+</section>
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Point</div>
+      <h2 class="serif glow">選ばれる4つの理由</h2>
+    </div>
+    <div class="features reveal reveal-1">
+      <div class="feature"><div class="num en">01</div><h3>丁寧なカウンセリング</h3><p>骨格・なりたいイメージ・普段のメイクまでヒアリングし、後悔のないデザインをご提案します。</p></div>
+      <div class="feature"><div class="num en">02</div><h3>1本ずつ、痛みに配慮</h3><p>目元にやさしい施術を徹底し、「気づいたら眠っていた」というお声を多くいただいています。</p></div>
+      <div class="feature"><div class="num en">03</div><h3>完全プライベート空間</h3><p>他のお客様と顔を合わせない、落ち着いた個室スペースでゆったりお過ごしいただけます。</p></div>
+      <div class="feature"><div class="num en">04</div><h3>高い技術力への追求</h3><p>最新の技法・素材を積極的に取り入れ、持ちの良さと自然な仕上がりを追求しています。</p></div>
+    </div>
+  </div>
+</section>
+<section id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Gallery</div>
+      <h2 class="serif">Before / After Story</h2>
+      <p>※実際の症例写真に差し替えてご利用ください（現在はイメージカラーで表示）。</p>
+    </div>
+    <div class="gallery reveal reveal-1">
+      <div class="gcard g1"><div class="tag">Natural Volume<small>ナチュラルボリューム</small></div></div>
+      <div class="gcard g2"><div class="tag">Parisian Lift<small>まつげパーマ</small></div></div>
+      <div class="gcard g3"><div class="tag">Brow Lamination<small>眉毛ラミネーション</small></div></div>
+      <div class="gcard g4"><div class="tag">Tint &amp; Design<small>眉ティント</small></div></div>
+      <div class="gcard g5"><div class="tag">Cat-eye Line<small>キャットライン</small></div></div>
+      <div class="gcard g6"><div class="tag">Soft Brown<small>ソフトブラウン</small></div></div>
+      <div class="gcard g7"><div class="tag">Doll Eye<small>ドーリーライン</small></div></div>
+      <div class="gcard g8"><div class="tag">Ash Gray<small>アッシュグレー</small></div></div>
+    </div>
+  </div>
+</section>
+<section class="alt" id="menu">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Menu</div>
+      <h2 class="serif">メニュー・料金</h2>
+      <p>※料金は仮のものです。公開前に正式な価格へ更新してください。</p>
+    </div>
+    <div class="ribbon reveal">🎉 ご新規様限定キャンペーン実施中（仮）</div>
+    <div class="menu-tabs reveal reveal-1">
+      <div class="menu-tab active" data-tab="lash">Eyelash</div>
+      <div class="menu-tab" data-tab="brow">Eyebrow</div>
+    </div>
+    <div class="menu-panel active reveal reveal-1" id="panel-lash">
+      <div class="menu-row"><span class="name">ナチュラルシングル<small>100本／束感控えめ</small></span><span class="price en">¥6,500</span></div>
+      <div class="menu-row"><span class="name">ボリュームラッシュ<small>120本／ふんわり束感</small></span><span class="price en">¥8,500</span></div>
+      <div class="menu-row"><span class="name">まつげパーマ<small>地まつげを立ち上げる</small></span><span class="price en">¥6,000</span></div>
+      <div class="menu-note">初回オフ無料（他店オフは+¥1,000）</div>
+    </div>
+    <div class="menu-panel" id="panel-brow">
+      <div class="menu-row"><span class="name">眉毛サロン<small>デザイン＋ワックス＋眉ティント</small></span><span class="price en">¥5,000</span></div>
+      <div class="menu-row"><span class="name">眉毛ワックス<small>単品</small></span><span class="price en">¥3,000</span></div>
+      <div class="menu-row"><span class="name">眉ティント<small>単品／持続約1〜2週間</small></span><span class="price en">¥3,500</span></div>
+      <div class="menu-note">初めての方はカウンセリング込み</div>
+    </div>
+  </div>
+</section>
+<section class="alt" id="news">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">News</div>
+      <h2 class="serif">お知らせ</h2>
+      <p>※ダミーの日付・内容です。実際の情報に差し替えてご利用ください。</p>
+    </div>
+    <div class="news-list reveal reveal-1">
+      <a class="news-row" href="#"><span class="news-date en">2026.08.01</span><span class="news-tag">Info</span><span class="news-title">夏季限定メニュー「汗に強いまつげパーマ」を追加しました</span></a>
+      <a class="news-row" href="#"><span class="news-date en">2026.07.15</span><span class="news-tag">Campaign</span><span class="news-title">ご新規様限定 初回オフ無料キャンペーンを開始しました</span></a>
+      <a class="news-row" href="#"><span class="news-date en">2026.06.20</span><span class="news-tag">Menu</span><span class="news-title">眉毛メニューの料金を改定しました</span></a>
+      <a class="news-row" href="#"><span class="news-date en">2026.05.10</span><span class="news-tag">Info</span><span class="news-title">営業時間を11:00〜20:00に変更しました</span></a>
+      <a class="news-row" href="#"><span class="news-date en">2026.04.02</span><span class="news-tag">Media</span><span class="news-title">美容メディアに施術事例を掲載していただきました</span></a>
+      <a class="news-row" href="#"><span class="news-date en">2026.03.18</span><span class="news-tag">Info</span><span class="news-title">SALON VILLAGE 吉祥寺にて営業を開始しました</span></a>
+    </div>
+  </div>
+</section>
+<section id="staff">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Staff</div>
+      <h2 class="serif">担当スタイリスト</h2>
+      <p>指名でのご予約も承っています。普段の雰囲気はInstagramをご覧ください。</p>
+    </div>
+    <div class="stylist">
+      <div class="stylist-photo reveal"><span>R</span></div>
+      <div class="stylist-bio reveal reveal-1">
+        <div class="role">Owner / Stylist</div>
+        <h3 class="serif">〇〇 〇〇（仮）</h3>
+        <p>大手サロンでの勤務を経て、吉祥寺で独立。「その人らしさを引き立てる」デザインを信条に、日々技術を磨いています。</p>
+        <p>初めての方も安心して通っていただけるよう、丁寧なカウンセリングを何より大切にしています。</p>
+        <div class="quote en">"Beauty begins the moment you decide to be yourself."</div>
+        <a class="staff-insta" href="https://www.instagram.com/reve_kichijoji/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 2c2.7 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.21.6 1.76 1.15.5.5.9 1.1 1.15 1.76.25.64.42 1.37.47 2.43.05 1.06.06 1.42.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.76 4.9 4.9 0 0 1-1.76 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.42.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.76-1.15 4.9 4.9 0 0 1-1.15-1.76c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.7 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.21 1.15-1.76A4.9 4.9 0 0 1 5.44 2.53c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.3 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.4-8.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>
+          <span>@reve_kichijoji をフォロー</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="alt" id="voice">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Voice</div>
+      <h2 class="serif">お客様の声</h2>
+      <p>※こちらはサンプルです。実際のお声に差し替えてご利用ください。</p>
+    </div>
+  </div>
+  <div class="testi-marquee reveal reveal-1">
+    <div class="testi-track">
+      <div class="testi-card"><p>カウンセリングが丁寧で、初めてでも安心してお任せできました。仕上がりも自然で毎朝のメイクが楽になりました。</p><div class="who">20代・会社員</div></div>
+      <div class="testi-card"><p>眉毛のデザインで顔の印象がこんなに変わるとは思いませんでした。担当の方の技術力の高さを感じます。</p><div class="who">30代・会社員</div></div>
+      <div class="testi-card"><p>施術中はいつも気づいたら寝てしまうくらいリラックスできます。プライベート空間なのも嬉しいポイントです。</p><div class="who">20代・学生</div></div>
+      <div class="testi-card"><p>他店でパーマが残っていて相談したところ、丁寧にケアしてくださり均一な仕上がりになりました。</p><div class="who">20代・会社員</div></div>
+      <div class="testi-card"><p>初めてのマツエクで不安でしたが、長さやデザインを一緒に相談しながら決められて安心でした。</p><div class="who">20代・学生</div></div>
+      <div class="testi-card"><p>完全個室なので周りを気にせずリラックスできます。次回も指名でお願いしたいです。</p><div class="who">30代・会社員</div></div>
+      <div class="testi-card"><p>カウンセリングが丁寧で、初めてでも安心してお任せできました。仕上がりも自然で毎朝のメイクが楽になりました。</p><div class="who">20代・会社員</div></div>
+      <div class="testi-card"><p>眉毛のデザインで顔の印象がこんなに変わるとは思いませんでした。担当の方の技術力の高さを感じます。</p><div class="who">30代・会社員</div></div>
+      <div class="testi-card"><p>施術中はいつも気づいたら寝てしまうくらいリラックスできます。プライベート空間なのも嬉しいポイントです。</p><div class="who">20代・学生</div></div>
+      <div class="testi-card"><p>他店でパーマが残っていて相談したところ、丁寧にケアしてくださり均一な仕上がりになりました。</p><div class="who">20代・会社員</div></div>
+      <div class="testi-card"><p>初めてのマツエクで不安でしたが、長さやデザインを一緒に相談しながら決められて安心でした。</p><div class="who">20代・学生</div></div>
+      <div class="testi-card"><p>完全個室なので周りを気にせずリラックスできます。次回も指名でお願いしたいです。</p><div class="who">30代・会社員</div></div>
+    </div>
+  </div>
+</section>
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">FAQ</div>
+      <h2 class="serif">よくあるご質問</h2>
+    </div>
+    <div class="faq reveal reveal-1">
+      <div class="faq-item open"><div class="faq-q"><span>施術中の痛みはありますか？</span><span class="plus">+</span></div><div class="faq-a"><p>目元にやさしい施術を徹底しており、多くのお客様が施術中に眠ってしまうほどリラックスしていただいています。</p></div></div>
+      <div class="faq-item"><div class="faq-q"><span>施術時間はどれくらいですか？</span><span class="plus">+</span></div><div class="faq-a"><p>メニューにもよりますが、まつげエクステで60〜90分、眉毛メニューで30〜45分が目安です（仮）。</p></div></div>
+      <div class="faq-item"><div class="faq-q"><span>初めてでも予約できますか？</span><span class="plus">+</span></div><div class="faq-a"><p>もちろん可能です。カウンセリングを丁寧に行いますので、Instagram DMからお気軽にご相談ください。</p></div></div>
+      <div class="faq-item"><div class="faq-q"><span>キャンセルはいつまで可能ですか？</span><span class="plus">+</span></div><div class="faq-a"><p>ご予約前日までにDMにてご連絡ください（仮の内容です。実際のポリシーに差し替えてください）。</p></div></div>
+      <div class="faq-item"><div class="faq-q"><span>お支払い方法を教えてください</span><span class="plus">+</span></div><div class="faq-a"><p>現金・キャッシュレス決済に対応しています（仮の内容です。実際の対応方法に差し替えてください）。</p></div></div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Instagram</div>
+      <h2 class="serif">最新の投稿</h2>
+    </div>
+    <div class="insta-grid reveal reveal-1">
+      <div class="insta-cell"><svg viewBox="0 0 100 100"><path d="M10,50 C30,20 70,20 90,50 C70,80 30,80 10,50 Z" fill="none" stroke="#fff" stroke-width="3"/></svg></div>
+      <div class="insta-cell"><svg viewBox="0 0 100 100"><path d="M10,50 C30,20 70,20 90,50 C70,80 30,80 10,50 Z" fill="none" stroke="#fff" stroke-width="3"/></svg></div>
+      <div class="insta-cell"><svg viewBox="0 0 100 100"><path d="M10,50 C30,20 70,20 90,50 C70,80 30,80 10,50 Z" fill="none" stroke="#fff" stroke-width="3"/></svg></div>
+      <div class="insta-cell"><svg viewBox="0 0 100 100"><path d="M10,50 C30,20 70,20 90,50 C70,80 30,80 10,50 Z" fill="none" stroke="#fff" stroke-width="3"/></svg></div>
+      <div class="insta-cell"><svg viewBox="0 0 100 100"><path d="M10,50 C30,20 70,20 90,50 C70,80 30,80 10,50 Z" fill="none" stroke="#fff" stroke-width="3"/></svg></div>
+      <div class="insta-cell"><svg viewBox="0 0 100 100"><path d="M10,50 C30,20 70,20 90,50 C70,80 30,80 10,50 Z" fill="none" stroke="#fff" stroke-width="3"/></svg></div>
+    </div>
+    <div class="insta-follow reveal reveal-2">
+      <a class="btn btn-line" href="https://www.instagram.com/reve_kichijoji/" target="_blank" rel="noopener">@reve_kichijoji をフォロー</a>
+    </div>
+  </div>
+</section>
+<section class="alt" id="access">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Access</div>
+      <h2 class="serif">アクセス・営業時間</h2>
+    </div>
+    <div class="access">
+      <iframe class="access-map" src="https://www.google.com/maps?q=35.7057520128097,139.576799702049&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="access-info reveal reveal-1">
+        <dl>
+          <dt>Salon</dt><dd>Rêve Kichijoji（仮称）<br><span style="font-size:12px;color:var(--ink-soft);">SALON VILLAGE 吉祥寺 内（完全個室）</span></dd>
+          <dt>Address</dt><dd>東京都武蔵野市吉祥寺本町2-16-12<br>ヨキヒ吉祥寺 2F</dd>
+          <dt>Access</dt><dd>吉祥寺駅［北口］より徒歩6分<br>東急百貨店裏の大正通り沿い（1Fはフライングタイガー）</dd>
+          <dt>Hours</dt><dd>11:00〜20:00（最終受付 19:00）<br>不定休</dd>
+          <dt>予約</dt><dd>完全予約制／Instagram DMより承ります</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="dark">
+  <div class="wrap final-cta">
+    <div class="eyebrow reveal">Reservation</div>
+    <h2 class="serif reveal reveal-1">まずはお気軽にご相談ください</h2>
+    <p class="reveal reveal-1">デザインのご相談だけでも歓迎です。Instagram DMからお気軽にどうぞ。</p>
+    <a class="btn btn-cream reveal reveal-2" href="https://www.instagram.com/reve_kichijoji/" target="_blank" rel="noopener">Instagram DMで予約する</a>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo en">Rêve Kichijoji</div>
+        <p>吉祥寺の完全予約制まつげ・眉毛サロン。<br>お一人おひとりに寄り添うデザインをお届けします。（仮ページ）</p>
+      </div>
+      <div>
+        <h4>MENU</h4>
+        <a href="#concept">コンセプト</a>
+        <a href="#staff">スタッフ</a>
+        <a href="#gallery">ギャラリー</a>
+        <a href="#menu">メニュー・料金</a>
+        <a href="#news">お知らせ</a>
+        <a href="#voice">お客様の声</a>
+        <a href="#faq">よくある質問</a>
+        <a href="#access">アクセス</a>
+      </div>
+      <div>
+        <h4>CONTACT</h4>
+        <a href="https://www.instagram.com/reve_kichijoji/" target="_blank" rel="noopener">Instagram @reve_kichijoji</a>
+        <a href="#access">吉祥寺駅より徒歩5分</a>
+        <a href="#menu">11:00–20:00（不定休）</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Rêve Kichijoji. All rights reserved.</span>
+      <span>このページはサンプルです。公開前に内容をご確認ください。</span>
+    </div>
+  </div>
+</footer>
+<a class="float-cta" href="https://www.instagram.com/reve_kichijoji/" target="_blank" rel="noopener" id="floatCta">
+  <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 2c2.7 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.21.6 1.76 1.15.5.5.9 1.1 1.15 1.76.25.64.42 1.37.47 2.43.05 1.06.06 1.42.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.76 4.9 4.9 0 0 1-1.76 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.42.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.76-1.15 4.9 4.9 0 0 1-1.15-1.76c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.7 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.21 1.15-1.76A4.9 4.9 0 0 1 5.44 2.53c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.3 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.4-8.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>
+  <span class="label-full">DMで予約する</span>
+</a>
+<script>
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 40); });
+  const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }); }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  document.querySelectorAll('.menu-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+    });
+  });
+  const counters = document.querySelectorAll('.count-up');
+  const counterIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseFloat(el.dataset.target);
+      const decimal = parseInt(el.dataset.decimal || '0');
+      const suffix = el.dataset.suffix || '';
+      const duration = 1400;
+      const start = performance.now();
+      function tick(now){
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const val = target * eased;
+        el.textContent = (decimal ? val.toFixed(decimal) : Math.round(val)) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      counterIO.unobserve(el);
+    });
+  }, { threshold: 0.6 });
+  counters.forEach(el => counterIO.observe(el));
+  const floatCta = document.getElementById('floatCta');
+  const heroEl = document.querySelector('.hero');
+  window.addEventListener('scroll', () => {
+    const heroBottom = heroEl.offsetTop + heroEl.offsetHeight;
+    floatCta.classList.toggle('show', window.scrollY > heroBottom - 200);
+  });
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+  const burger = document.getElementById('burger');
+  let mobileNav = null;
+  burger.addEventListener('click', () => {
+    if (mobileNav) { mobileNav.remove(); mobileNav = null; return; }
+    mobileNav = document.createElement('div');
+    mobileNav.style.cssText = 'position:fixed;top:64px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);padding:20px 28px;display:flex;flex-direction:column;gap:16px;z-index:99;';
+    [['concept','コンセプト'],['staff','スタッフ'],['menu','メニュー'],['news','お知らせ'],['voice','口コミ'],['faq','FAQ'],['access','アクセス']].forEach(([id,label]) => {
+      const a = document.createElement('a');
+      a.href = '#' + id;
+      a.textContent = label;
+      a.style.cssText = 'font-size:14px;letter-spacing:.05em;';
+      a.addEventListener('click', () => { mobileNav.remove(); mobileNav = null; });
+      mobileNav.appendChild(a);
+    });
+    document.body.appendChild(mobileNav);
+  });
+</script>
+</body>
+</html>
