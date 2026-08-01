@@ -33,20 +33,14 @@
   .reveal-1{ transition-delay:.08s; } .reveal-2{ transition-delay:.18s; } .reveal-3{ transition-delay:.28s; }
   .features.reveal-1 .feature:nth-child(1),
   .benefits-grid.reveal-1 .benefit-card:nth-child(1),
-  .gallery.reveal-1 .gcard:nth-child(1){ transition-delay:.05s; }
+  .ba-grid.reveal-1 .ba-pair:nth-child(1){ transition-delay:.05s; }
   .features.reveal-1 .feature:nth-child(2),
-  .benefits-grid.reveal-1 .benefit-card:nth-child(2),
-  .gallery.reveal-1 .gcard:nth-child(2){ transition-delay:.14s; }
+  .benefits-grid.reveal-1 .benefit-card:nth-child(2){ transition-delay:.14s; }
   .features.reveal-1 .feature:nth-child(3),
-  .benefits-grid.reveal-1 .benefit-card:nth-child(3),
-  .gallery.reveal-1 .gcard:nth-child(3){ transition-delay:.23s; }
+  .benefits-grid.reveal-1 .benefit-card:nth-child(3){ transition-delay:.23s; }
   .features.reveal-1 .feature:nth-child(4),
-  .benefits-grid.reveal-1 .benefit-card:nth-child(4),
-  .gallery.reveal-1 .gcard:nth-child(4){ transition-delay:.32s; }
-  .gallery.reveal-1 .gcard:nth-child(5){ transition-delay:.41s; }
-  .gallery.reveal-1 .gcard:nth-child(6){ transition-delay:.50s; }
-  .gallery.reveal-1 .gcard:nth-child(7){ transition-delay:.59s; }
-  .gallery.reveal-1 .gcard:nth-child(8){ transition-delay:.68s; }
+  .benefits-grid.reveal-1 .benefit-card:nth-child(4){ transition-delay:.32s; }
+  .ba-grid.reveal-1 .ba-pair:nth-child(2){ transition-delay:.18s; }
   header{ position:fixed; top:0; left:0; right:0; z-index:100; padding:26px 0; transition:padding .35s ease, background .35s ease, box-shadow .35s ease; }
   header .wrap{ display:flex; align-items:center; justify-content:space-between; }
   header.scrolled{ padding:14px 0; background:rgba(255,250,246,0.92); backdrop-filter:blur(10px); box-shadow:0 1px 0 var(--line); }
@@ -74,6 +68,8 @@
   .hero::after{ width:320px; height:320px; background:var(--accent); bottom:8%; right:8%; animation:floatOrb 11s ease-in-out infinite reverse; }
   @keyframes floatOrb{ 0%,100%{ transform:translateY(0) scale(1);} 50%{ transform:translateY(-20px) scale(1.06);} }
   .hero-parallax{ position:relative; z-index:1; will-change:transform, opacity; }
+  .hero-name{ font-family:'Noto Sans JP', sans-serif; font-weight:300; font-size:clamp(26px,4vw,40px); letter-spacing:0.32em; color:var(--ink); margin-bottom:24px; }
+  .hero-name .accent{ color:var(--accent-deep); }
   .hero-badges{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:22px; }
   .hero-badge{ display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.85); backdrop-filter:blur(6px); border:1px solid var(--line); padding:9px 20px; border-radius:999px; font-size:11.5px; letter-spacing:.04em; color:var(--accent-deep); box-shadow:0 8px 24px -10px rgba(225,76,116,.3); }
   .hero-badge span{ font-family:'Cormorant Garamond',serif; font-weight:700; font-size:14px; color:var(--ink); }
@@ -114,22 +110,13 @@
   .feature .num{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:38px; color:var(--accent); margin-bottom:18px; }
   .feature h3{ font-size:16px; margin-bottom:12px; font-weight:600; letter-spacing:.03em; }
   .feature p{ font-size:14px; color:var(--ink-soft); }
-  .gallery{ display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:130px; gap:14px; }
-  .gcard{ position:relative; overflow:hidden; border-radius:14px; display:flex; align-items:flex-end; padding:18px; color:#fff; isolation:isolate; transition:transform .45s cubic-bezier(.2,.7,.3,1), box-shadow .45s ease; }
-  .gcard:hover{ transform:translateY(-6px) scale(1.02); box-shadow:0 22px 40px -16px rgba(225,76,116,.4); z-index:2; }
-  .gcard::before{ content:""; position:absolute; inset:0; z-index:-1; background-color:#FFDCE4; background-image:var(--bgimg); background-size:cover; background-position:center; transition:transform .6s cubic-bezier(.2,.7,.3,1); }
-  .gcard:hover::before{ transform:scale(1.08); }
-  .gcard::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, transparent 40%, rgba(61,34,51,.72) 100%); z-index:-1; }
-  .gcard .tag{ font-size:12px; letter-spacing:.06em; font-weight:500; }
-  .gcard .tag small{ display:block; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px; opacity:.9; margin-top:2px; }
-  .g1{ grid-column:span 2; grid-row:span 2; }
-  .g2{ grid-column:span 2; }
-  .g3{ grid-column:span 1; }
-  .g4{ grid-column:span 1; }
-  .g5{ grid-column:span 2; }
-  .g6{ grid-column:span 2; grid-row:span 1; }
-  .g7{ grid-column:span 2; }
-  .g8{ grid-column:span 2; }
+  .ba-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:36px; }
+  .ba-images{ display:grid; grid-template-columns:1fr 1fr; gap:3px; border-radius:16px; overflow:hidden; }
+  .ba-img{ aspect-ratio:3/4; background-size:cover; background-position:center; position:relative; transition:transform .5s ease; }
+  .ba-img .ba-chip{ position:absolute; top:12px; left:12px; background:rgba(255,255,255,.92); backdrop-filter:blur(6px); font-size:10.5px; letter-spacing:.08em; padding:5px 13px; border-radius:999px; color:var(--ink); font-weight:600; }
+  .ba-img.after .ba-chip{ background:var(--accent); color:#fff; }
+  .ba-caption{ text-align:center; margin-top:16px; font-size:13.5px; color:var(--ink-soft); }
+  .ba-caption strong{ color:var(--ink); font-weight:600; }
   .menu-combo{ text-align:center; font-size:13px; color:var(--accent-deep); background:var(--bg-alt); border:1px dashed var(--accent); border-radius:999px; padding:10px 22px; width:fit-content; margin:0 auto 40px; }
   .menu-tabs{ display:flex; justify-content:center; gap:8px; margin-bottom:48px; }
   .menu-tab{ padding:11px 30px; font-size:13px; letter-spacing:.08em; border:1.5px solid var(--line); cursor:pointer; background:var(--card); transition:all .3s ease; border-radius:999px; }
@@ -232,8 +219,7 @@
     .benefits-grid{ grid-template-columns:1fr 1fr; }
     .flow-grid{ grid-template-columns:1fr; gap:36px; }
     .flow-step .flow-line{ display:none; }
-    .gallery{ grid-template-columns:repeat(2,1fr); grid-auto-rows:120px; }
-    .g1,.g5{ grid-column:span 2; }
+    .ba-grid{ grid-template-columns:1fr; gap:28px; }
     .foot-grid{ grid-template-columns:1fr; }
     .insta-grid{ grid-template-columns:repeat(3,1fr); }
     .float-cta span.label-full{ display:none; }
@@ -261,11 +247,12 @@
 </header>
 <section class="hero">
   <div class="hero-parallax" id="heroParallax">
+  <div class="hero-name reveal in">SALON VILLAGE <span class="accent">吉祥寺</span></div>
   <div class="hero-badges reveal in">
     <div class="hero-badge">★★★★★ <span>5.0</span> Googleクチコミ評価（仮）</div>
     <div class="hero-badge campaign">🎉 ご新規様 初回¥1,000 OFF</div>
   </div>
-  <div class="eyebrow reveal in">SALON VILLAGE 吉祥寺 ｜ Private Lash &amp; Brow Salon</div>
+  <div class="eyebrow reveal in">Private Lash &amp; Brow Salon</div>
   <h1 class="reveal in">一本一本に、<span class="en gradient-text">soin</span>を。<br><span class="gradient-text">吉祥寺の隠れ家サロン</span></h1>
   <p class="sub reveal in">なりたい印象に寄り添うデザインと、丁寧なカウンセリング。<br>吉祥寺駅から徒歩圏内、完全予約制のプライベートサロンです。</p>
   <div class="hero-actions reveal in">
@@ -286,8 +273,8 @@
 </div>
 <section id="concept">
   <div class="wrap concept">
-    <div class="concept-visual reveal-left" style="background-image:url('https://storage.googleapis.com/production-os-assets/assets/44621b5e-8d2f-4125-96af-6398403ca2e9');">
-      <div class="cap-chip">SALON VILLAGE 公式写真・個室スペースのイメージ</div>
+    <div class="concept-visual reveal-left" style="background-image:url('https://imgbp.hotp.jp/CSP/IMG_SRC_K/64/82/C060116482/C060116482.jpg?impolicy=HPB_policy_default&w=900&h=1125');">
+      <div class="cap-chip">SALON VILLAGE 吉祥寺 店内写真（ホットペッパービューティー掲載）</div>
     </div>
     <div class="concept-text reveal-right">
       <div class="eyebrow">Concept</div>
@@ -334,15 +321,21 @@
       <h2 class="serif">Before / After Story</h2>
       <p>※フリー素材によるイメージ写真です。実際の症例写真をご用意でき次第、差し替えてご利用ください。</p>
     </div>
-    <div class="gallery reveal reveal-1">
-      <div class="gcard g1 reveal-scale" style="--bgimg:url('https://images.pexels.com/photos/3373735/pexels-photo-3373735.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200');"><div class="tag">Natural Volume<small>ナチュラルボリューム</small></div></div>
-      <div class="gcard g2 reveal-scale" style="--bgimg:url('https://images.pexels.com/photos/9929038/pexels-photo-9929038.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200');"><div class="tag">Parisian Lift<small>まつげパーマ</small></div></div>
-      <div class="gcard g3 reveal-scale" style="--bgimg:url('https://images.pexels.com/photos/3373743/pexels-photo-3373743.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800');"><div class="tag">Brow Lamination<small>眉毛ラミネーション</small></div></div>
-      <div class="gcard g4 reveal-scale" style="--bgimg:url('https://images.pexels.com/photos/3373723/pexels-photo-3373723.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800');"><div class="tag">Tint &amp; Design<small>眉ティント</small></div></div>
-      <div class="gcard g5 reveal-scale" style="--bgimg:url('https://images.pexels.com/photos/9929043/pexels-photo-9929043.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200');"><div class="tag">Cat-eye Line<small>キャットライン</small></div></div>
-      <div class="gcard g6 reveal-scale" style="--bgimg:url('https://images.pexels.com/photos/3373729/pexels-photo-3373729.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200');"><div class="tag">Soft Brown<small>ソフトブラウン</small></div></div>
-      <div class="gcard g7 reveal-scale" style="--bgimg:url('https://images.pexels.com/photos/5046577/pexels-photo-5046577.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200');"><div class="tag">Doll Eye<small>ドーリーライン</small></div></div>
-      <div class="gcard g8 reveal-scale" style="--bgimg:url('https://images.pexels.com/photos/6654168/pexels-photo-6654168.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200');"><div class="tag">Ash Gray<small>アッシュグレー</small></div></div>
+    <div class="ba-grid reveal reveal-1">
+      <div class="ba-pair reveal-scale">
+        <div class="ba-images">
+          <div class="ba-img before" style="background-image:url('https://images.pexels.com/photos/3373729/pexels-photo-3373729.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800');"><span class="ba-chip">Before</span></div>
+          <div class="ba-img after" style="background-image:url('https://images.pexels.com/photos/3373735/pexels-photo-3373735.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800');"><span class="ba-chip">After</span></div>
+        </div>
+        <div class="ba-caption"><strong>まつげ：</strong>ナチュラル → ボリュームラッシュ</div>
+      </div>
+      <div class="ba-pair reveal-scale">
+        <div class="ba-images">
+          <div class="ba-img before" style="background-image:url('https://images.pexels.com/photos/3373723/pexels-photo-3373723.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800');"><span class="ba-chip">Before</span></div>
+          <div class="ba-img after" style="background-image:url('https://images.pexels.com/photos/3373743/pexels-photo-3373743.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800');"><span class="ba-chip">After</span></div>
+        </div>
+        <div class="ba-caption"><strong>眉毛：</strong>地眉 → 眉毛ラミネーション</div>
+      </div>
     </div>
   </div>
 </section>
