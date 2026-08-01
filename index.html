@@ -8,9 +8,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #FAF6EF; --bg-alt: #F2E9DC; --card: #FFFFFF; --ink: #241E1A; --ink-soft: #786A5D;
-    --accent: #B98A63; --accent-deep: #8C6239; --line: #E6D9C6; --dark: #241C17; --dark-2: #322619; --cream: #F7F0E4;
-    --gold1: #E8C89A; --gold2: #B98A63; --gold3: #8C6239; --glow: rgba(185,138,99,.55);
+    --bg: #FFFAF6; --bg-alt: #FFF0EC; --card: #FFFFFF; --ink: #3D2B2A; --ink-soft: #8A716E;
+    --accent: #FF6F91; --accent2: #FFB347; --accent-deep: #E14C74; --line: #FFE1E4; --dark: #3D2233; --dark-2: #4A2C39; --cream: #FFF3E9;
+    --gold1: #FFD59E; --gold2: #FF9EB0; --gold3: #E8547A; --glow: rgba(255,111,145,.45);
   }
   .gradient-text{ background:linear-gradient(100deg, var(--gold3), var(--gold1) 45%, var(--accent-deep) 90%); -webkit-background-clip:text; background-clip:text; color:transparent; }
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -27,35 +27,37 @@
   .reveal-1{ transition-delay:.08s; } .reveal-2{ transition-delay:.18s; } .reveal-3{ transition-delay:.28s; }
   header{ position:fixed; top:0; left:0; right:0; z-index:100; padding:26px 0; transition:padding .35s ease, background .35s ease, box-shadow .35s ease; }
   header .wrap{ display:flex; align-items:center; justify-content:space-between; }
-  header.scrolled{ padding:14px 0; background:rgba(250,246,239,0.9); backdrop-filter:blur(10px); box-shadow:0 1px 0 var(--line); }
+  header.scrolled{ padding:14px 0; background:rgba(255,250,246,0.92); backdrop-filter:blur(10px); box-shadow:0 1px 0 var(--line); }
   .logo{ font-size:21px; font-weight:600; letter-spacing:0.1em; display:flex; align-items:baseline; gap:8px;}
-  .logo .en{ font-size:24px; }
-  .nav-links{ display:flex; gap:32px; font-size:12px; letter-spacing:0.05em; }
+  .logo .en{ font-size:24px; color:var(--accent-deep); }
+  .nav-links{ display:flex; gap:28px; font-size:12px; letter-spacing:0.05em; }
   .nav-links a{ position:relative; color:var(--ink); padding-bottom:4px; display:flex; flex-direction:column; align-items:center; gap:3px; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px; }
   .nav-links a .ja{ font-family:'Noto Sans JP',sans-serif; font-style:normal; font-size:9.5px; color:var(--ink-soft); letter-spacing:.08em; }
   .nav-links a::after{ content:""; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--accent-deep); transition:width .3s ease; }
   .nav-links a:hover::after{ width:100%; }
   .header-actions{ display:flex; align-items:center; gap:18px; }
-  .btn{ display:inline-flex; align-items:center; gap:8px; padding:13px 30px; font-size:13px; letter-spacing:0.08em; border-radius:1px; transition:transform .3s ease, box-shadow .3s ease, background .3s ease, color .3s ease; }
-  .btn-solid{ background:var(--ink); color:#fff; }
-  .btn-solid:hover{ background:var(--accent-deep); transform:translateY(-2px); box-shadow:0 10px 24px -8px rgba(140,98,57,.55); }
-  .btn-line{ border:1px solid var(--ink); color:var(--ink); }
-  .btn-line:hover{ background:var(--ink); color:#fff; transform:translateY(-2px); }
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:13px 30px; font-size:13px; letter-spacing:0.08em; border-radius:999px; transition:transform .3s ease, box-shadow .3s ease, background .3s ease, color .3s ease; }
+  .btn-solid{ background:var(--accent); color:#fff; box-shadow:0 10px 24px -10px rgba(225,76,116,.6); }
+  .btn-solid:hover{ background:var(--accent-deep); transform:translateY(-2px); box-shadow:0 14px 28px -10px rgba(225,76,116,.7); }
+  .btn-line{ border:1.5px solid var(--accent-deep); color:var(--accent-deep); }
+  .btn-line:hover{ background:var(--accent-deep); color:#fff; transform:translateY(-2px); }
   .btn-cream{ background:var(--cream); color:var(--dark); }
   .btn-cream:hover{ background:#fff; transform:translateY(-2px); }
   .burger{ display:none; flex-direction:column; gap:5px; cursor:pointer; }
   .burger span{ width:22px; height:1px; background:var(--ink); display:block; }
-  .hero{ position:relative; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:140px 0 60px; background: radial-gradient(ellipse at 15% 15%, rgba(185,138,99,0.16), transparent 50%), radial-gradient(ellipse at 85% 25%, rgba(185,138,99,0.12), transparent 45%), var(--bg); overflow:hidden; }
+  .hero{ position:relative; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:150px 0 60px; background: radial-gradient(ellipse at 15% 15%, rgba(255,111,145,0.20), transparent 50%), radial-gradient(ellipse at 85% 25%, rgba(255,179,71,0.18), transparent 45%), radial-gradient(ellipse at 50% 100%, rgba(255,158,176,0.14), transparent 55%), var(--bg); overflow:hidden; }
   .hero-illust{ width:min(480px, 70vw); margin:0 auto 8px; opacity:.9; }
   .hero-illust path, .hero-illust line{ fill:none; stroke:var(--accent-deep); stroke-width:1.4; stroke-linecap:round; stroke-dasharray:900; stroke-dashoffset:900; animation:draw 2.6s cubic-bezier(.4,.1,.2,1) forwards; }
   .hero-illust .l2{ animation-delay:.15s; } .hero-illust .l3{ animation-delay:.30s; } .hero-illust .l4{ animation-delay:.45s; } .hero-illust .l5{ animation-delay:.60s; } .hero-illust .l6{ animation-delay:.75s; }
   @keyframes draw{ to{ stroke-dashoffset:0; } }
-  .hero-badge{ display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--line); padding:9px 20px; border-radius:999px; font-size:11.5px; letter-spacing:.04em; color:var(--accent-deep); box-shadow:0 8px 24px -10px rgba(140,98,57,.35); margin-bottom:22px; }
+  .hero-badges{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:22px; }
+  .hero-badge{ display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--line); padding:9px 20px; border-radius:999px; font-size:11.5px; letter-spacing:.04em; color:var(--accent-deep); box-shadow:0 8px 24px -10px rgba(225,76,116,.3); }
   .hero-badge span{ font-family:'Cormorant Garamond',serif; font-weight:700; font-size:14px; color:var(--ink); }
+  .hero-badge.campaign{ background:linear-gradient(100deg, var(--accent), var(--accent2)); color:#fff; border:none; font-weight:500; }
   .hero .eyebrow{ font-size:12px; letter-spacing:0.35em; color:var(--accent-deep); text-transform:uppercase; margin:18px 0 22px; }
   .hero h1{ font-size:clamp(32px, 5.2vw, 56px); font-weight:600; line-height:1.55; margin-bottom:24px; }
   .hero h1 .en{ font-size:1.15em; color:var(--accent-deep); }
-  .hero p.sub{ font-size:15px; color:var(--ink-soft); max-width:480px; margin:0 auto 44px; }
+  .hero p.sub{ font-size:16px; color:var(--ink-soft); max-width:480px; margin:0 auto 44px; }
   .hero-actions{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:70px;}
   .hero-stats{ display:flex; gap:0; border-top:1px solid var(--line); padding-top:34px; width:100%; max-width:640px; }
   .hero-stats div{ flex:1; text-align:center; border-left:1px solid var(--line); }
@@ -68,7 +70,7 @@
   .marquee{ background:var(--dark); color:var(--cream); overflow:hidden; white-space:nowrap; padding:18px 0; }
   .marquee-track{ display:inline-block; animation:scroll-left 26s linear infinite; }
   .marquee-track span{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; letter-spacing:.04em; padding:0 28px; opacity:.9; }
-  .marquee-track span.dot{ color:var(--accent); font-style:normal; }
+  .marquee-track span.dot{ color:var(--accent2); font-style:normal; }
   @keyframes scroll-left{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
   section{ padding:120px 0; }
   section.alt{ background:var(--bg-alt); }
@@ -77,105 +79,122 @@
   .section-head .eyebrow{ font-size:12px; letter-spacing:0.3em; color:var(--accent-deep); text-transform:uppercase; margin-bottom:16px; }
   section.dark .section-head .eyebrow{ color:var(--accent); }
   .section-head h2{ font-size:clamp(24px,3.4vw,34px); font-weight:600; }
-  .section-head p{ color:var(--ink-soft); font-size:13.5px; margin-top:16px; }
-  section.dark .section-head p{ color:#C9BBA9; }
+  .section-head p{ color:var(--ink-soft); font-size:14.5px; margin-top:16px; }
+  section.dark .section-head p{ color:#E8C9D6; }
   .concept{ display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center; }
-  .concept-visual{ aspect-ratio:4/5; border:1px solid var(--line); position:relative; overflow:hidden; background:linear-gradient(160deg, #F1E4D2 0%, #EAD8C0 55%, #E4CDAE 100%); display:flex; align-items:center; justify-content:center; }
+  .concept-visual{ aspect-ratio:4/5; border:1px solid var(--line); position:relative; overflow:hidden; border-radius:20px; background:linear-gradient(160deg, #FFEDF1 0%, #FFDCE4 55%, #FFC9D6 100%); display:flex; align-items:center; justify-content:center; }
   .concept-visual svg{ width:46%; opacity:.85; }
-  .concept-visual::before{ content:""; position:absolute; inset:14px; border:1px solid rgba(140,98,57,.35); }
+  .concept-visual::before{ content:""; position:absolute; inset:14px; border:1px solid rgba(225,76,116,.3); border-radius:12px; }
   .concept-text h2{ font-size:26px; margin-bottom:24px; line-height:1.7; }
-  .concept-text p{ color:var(--ink-soft); font-size:14.5px; margin-bottom:18px; }
+  .concept-text p{ color:var(--ink-soft); font-size:15px; margin-bottom:18px; }
   .concept-sign{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; color:var(--accent-deep); margin-top:26px; }
-  .features{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
-  .feature{ background:var(--bg); text-align:center; padding:52px 28px; transition:background .3s ease; position:relative; }
-  .feature:hover{ background:var(--card); }
+  .features{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:18px; overflow:hidden; }
+  .feature{ background:var(--card); text-align:center; padding:52px 28px; transition:background .3s ease; position:relative; }
+  .feature:hover{ background:var(--bg-alt); }
   .feature:hover .num{ text-shadow:0 0 22px var(--glow); }
   .feature .num{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:38px; color:var(--accent); margin-bottom:18px; }
   .feature h3{ font-size:16px; margin-bottom:12px; font-weight:600; letter-spacing:.03em; }
-  .feature p{ font-size:13px; color:var(--ink-soft); }
+  .feature p{ font-size:14px; color:var(--ink-soft); }
   .gallery{ display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:130px; gap:14px; }
-  .gcard{ position:relative; overflow:hidden; border-radius:2px; display:flex; align-items:flex-end; padding:18px; color:#fff; isolation:isolate; transition:transform .45s cubic-bezier(.2,.7,.3,1), box-shadow .45s ease; }
-  .gcard:hover{ transform:translateY(-6px) scale(1.02); box-shadow:0 22px 40px -16px rgba(36,28,23,.45); z-index:2; }
+  .gcard{ position:relative; overflow:hidden; border-radius:14px; display:flex; align-items:flex-end; padding:18px; color:#fff; isolation:isolate; transition:transform .45s cubic-bezier(.2,.7,.3,1), box-shadow .45s ease; }
+  .gcard:hover{ transform:translateY(-6px) scale(1.02); box-shadow:0 22px 40px -16px rgba(225,76,116,.4); z-index:2; }
   .gcard::before{ content:""; position:absolute; inset:0; z-index:-1; transition:transform .6s cubic-bezier(.2,.7,.3,1); }
   .gcard:hover::before{ transform:scale(1.08); }
-  .gcard::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, transparent 40%, rgba(20,14,10,.68) 100%); z-index:-1; }
+  .gcard::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, transparent 40%, rgba(61,34,51,.65) 100%); z-index:-1; }
   .gcard .tag{ font-size:12px; letter-spacing:.06em; font-weight:500; }
-  .gcard .tag small{ display:block; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px; opacity:.85; margin-top:2px; }
-  .g1{ grid-column:span 2; grid-row:span 2; background:linear-gradient(135deg,#C79A72,#8C6239); }
-  .g2{ grid-column:span 2; background:linear-gradient(135deg,#D8C0A0,#B98A63); }
-  .g3{ grid-column:span 1; background:linear-gradient(135deg,#8C6239,#5A3E22); }
-  .g4{ grid-column:span 1; background:linear-gradient(135deg,#E4CDAE,#C79A72); }
-  .g5{ grid-column:span 2; background:linear-gradient(135deg,#5A3E22,#241C17); }
-  .g6{ grid-column:span 2; grid-row:span 1; background:linear-gradient(135deg,#B98A63,#D8C0A0); }
-  .g7{ grid-column:span 2; background:linear-gradient(135deg,#C79A72,#E4CDAE); }
-  .g8{ grid-column:span 2; background:linear-gradient(135deg,#241C17,#5A3E22); }
+  .gcard .tag small{ display:block; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px; opacity:.9; margin-top:2px; }
+  .g1{ grid-column:span 2; grid-row:span 2; background:linear-gradient(135deg,#FFB6C1,#FF6F91); }
+  .g2{ grid-column:span 2; background:linear-gradient(135deg,#FFD9A0,#FFB347); }
+  .g3{ grid-column:span 1; background:linear-gradient(135deg,#FF6F91,#E14C74); }
+  .g4{ grid-column:span 1; background:linear-gradient(135deg,#FFE8B8,#FFC2CE); }
+  .g5{ grid-column:span 2; background:linear-gradient(135deg,#E14C74,#8A2E52); }
+  .g6{ grid-column:span 2; grid-row:span 1; background:linear-gradient(135deg,#FFC2CE,#FFE8B8); }
+  .g7{ grid-column:span 2; background:linear-gradient(135deg,#FFB347,#FFD9A0); }
+  .g8{ grid-column:span 2; background:linear-gradient(135deg,#8A2E52,#4A2C39); }
+  .menu-combo{ text-align:center; font-size:13px; color:var(--accent-deep); background:var(--bg-alt); border:1px dashed var(--accent); border-radius:999px; padding:10px 22px; width:fit-content; margin:0 auto 40px; }
   .menu-tabs{ display:flex; justify-content:center; gap:8px; margin-bottom:48px; }
-  .menu-tab{ padding:11px 30px; font-size:13px; letter-spacing:.08em; border:1px solid var(--line); cursor:pointer; background:var(--card); transition:all .3s ease; }
-  .menu-tab.active{ background:var(--ink); color:#fff; border-color:var(--ink); }
+  .menu-tab{ padding:11px 30px; font-size:13px; letter-spacing:.08em; border:1.5px solid var(--line); cursor:pointer; background:var(--card); transition:all .3s ease; border-radius:999px; }
+  .menu-tab.active{ background:var(--accent); color:#fff; border-color:var(--accent); }
   .menu-panel{ display:none; max-width:640px; margin:0 auto; }
   .menu-panel.active{ display:block; }
-  .menu-row{ display:flex; justify-content:space-between; align-items:baseline; padding:22px 0; border-bottom:1px solid var(--line); font-size:14.5px; }
+  .menu-row{ display:flex; justify-content:space-between; align-items:baseline; padding:22px 4px; border-bottom:1px solid var(--line); font-size:15.5px; }
   .menu-row .name{ color:var(--ink); font-weight:500; }
   .menu-row .name small{ display:block; color:var(--ink-soft); font-size:11.5px; margin-top:5px; font-weight:400; }
-  .menu-row .price{ font-family:'Cormorant Garamond',serif; color:var(--accent-deep); font-size:19px; white-space:nowrap; padding-left:20px; }
-  .menu-note{ font-size:11px; color:var(--ink-soft); margin-top:24px; text-align:center; }
+  .menu-row .price{ font-family:'Cormorant Garamond',serif; color:var(--accent-deep); font-size:20px; white-space:nowrap; padding-left:20px; font-weight:600; }
+  .menu-note{ font-size:11.5px; color:var(--ink-soft); margin-top:24px; text-align:center; }
+  .menu-source{ font-size:11px; color:var(--ink-soft); margin-top:8px; text-align:center; opacity:.8; }
   .news-list{ max-width:720px; margin:0 auto; border-top:1px solid var(--line); }
   .news-row{ display:flex; align-items:center; gap:24px; padding:20px 4px; border-bottom:1px solid var(--line); transition:padding-left .3s ease, color .3s ease; }
   .news-row:hover{ padding-left:12px; color:var(--accent-deep); }
   .news-date{ font-size:14px; color:var(--ink-soft); white-space:nowrap; width:100px; }
-  .news-tag{ font-size:10.5px; letter-spacing:.05em; border:1px solid var(--accent); color:var(--accent-deep); padding:3px 10px; white-space:nowrap; }
+  .news-tag{ font-size:10.5px; letter-spacing:.05em; border:1px solid var(--accent); color:var(--accent-deep); padding:3px 10px; white-space:nowrap; border-radius:999px; }
   .news-title{ font-size:13.5px; }
   .stylist{ display:grid; grid-template-columns:220px 1fr; gap:56px; align-items:center; max-width:760px; margin:0 auto; }
   .staff-insta{ display:inline-flex; align-items:center; gap:8px; margin-top:20px; font-size:12.5px; color:var(--accent-deep); border-bottom:1px solid var(--accent-deep); padding-bottom:2px; width:fit-content; }
   .staff-insta:hover{ color:var(--ink); border-color:var(--ink); }
-  .stylist-photo{ width:220px; height:220px; border-radius:50%; background:conic-gradient(from 210deg, #E4CDAE, #B98A63, #8C6239, #E4CDAE); display:flex; align-items:center; justify-content:center; position:relative; }
+  .stylist-photo{ width:220px; height:220px; border-radius:50%; background:conic-gradient(from 210deg, #FFDCE4, #FF9EB0, #E14C74, #FFDCE4); display:flex; align-items:center; justify-content:center; position:relative; }
   .stylist-photo::before{ content:""; position:absolute; inset:8px; border-radius:50%; background:var(--bg-alt); }
   .stylist-photo span{ position:relative; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:52px; color:var(--accent-deep); }
   .stylist-bio .role{ font-size:12px; letter-spacing:.2em; color:var(--accent-deep); text-transform:uppercase; margin-bottom:10px; }
   .stylist-bio h3{ font-size:22px; margin-bottom:16px; }
-  .stylist-bio p{ font-size:13.5px; color:var(--ink-soft); margin-bottom:14px; }
+  .stylist-bio p{ font-size:14px; color:var(--ink-soft); margin-bottom:14px; }
   .stylist-bio .quote{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:17px; color:var(--accent-deep); }
   .insta-grid{ display:grid; grid-template-columns:repeat(6,1fr); gap:10px; margin-bottom:36px; }
-  .insta-cell{ aspect-ratio:1; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; }
-  .insta-cell svg{ width:34%; opacity:.85; }
-  .insta-cell:nth-child(1){ background:linear-gradient(160deg,#EAD8C0,#C79A72); }
-  .insta-cell:nth-child(2){ background:linear-gradient(160deg,#8C6239,#5A3E22); }
-  .insta-cell:nth-child(3){ background:linear-gradient(160deg,#D8C0A0,#B98A63); }
-  .insta-cell:nth-child(4){ background:linear-gradient(160deg,#5A3E22,#8C6239); }
-  .insta-cell:nth-child(5){ background:linear-gradient(160deg,#C79A72,#EAD8C0); }
-  .insta-cell:nth-child(6){ background:linear-gradient(160deg,#B98A63,#D8C0A0); }
+  .insta-cell{ aspect-ratio:1; position:relative; overflow:hidden; border-radius:12px; display:flex; align-items:center; justify-content:center; }
+  .insta-cell svg{ width:34%; opacity:.9; }
+  .insta-cell:nth-child(1){ background:linear-gradient(160deg,#FFDCE4,#FF9EB0); }
+  .insta-cell:nth-child(2){ background:linear-gradient(160deg,#FFB347,#E14C74); }
+  .insta-cell:nth-child(3){ background:linear-gradient(160deg,#FFD9A0,#FF6F91); }
+  .insta-cell:nth-child(4){ background:linear-gradient(160deg,#E14C74,#8A2E52); }
+  .insta-cell:nth-child(5){ background:linear-gradient(160deg,#FF6F91,#FFDCE4); }
+  .insta-cell:nth-child(6){ background:linear-gradient(160deg,#FFC2CE,#FFD9A0); }
   .insta-follow{ text-align:center; }
   .access{ display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
-  .access-map{ aspect-ratio:4/3; width:100%; border:1px solid var(--line); filter:grayscale(.3) contrast(1.05); }
+  .access-map{ aspect-ratio:4/3; width:100%; border:1px solid var(--line); border-radius:16px; filter:saturate(1.05) contrast(1.02); }
   .access-info dl{ display:grid; grid-template-columns:96px 1fr; row-gap:22px; font-size:14px; }
   .access-info dt{ color:var(--accent-deep); font-size:11px; letter-spacing:.1em; text-transform:uppercase; }
   .access-info dd{ color:var(--ink); }
   .final-cta{ text-align:center; }
-  .final-cta .eyebrow{ color:var(--accent); }
+  .final-cta .eyebrow{ color:var(--accent2); }
   .final-cta h2{ font-size:clamp(24px,4vw,38px); margin:14px 0 20px; }
-  .final-cta p{ font-size:14px; color:#C9BBA9; margin-bottom:40px; }
-  footer{ background:var(--dark); color:#C9BBA9; padding:64px 0 32px; }
-  .foot-grid{ display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:40px; padding-bottom:44px; border-bottom:1px solid rgba(255,255,255,.1); }
+  .final-cta p{ font-size:14px; color:#E8C9D6; margin-bottom:40px; }
+  footer{ background:var(--dark); color:#E8C9D6; padding:64px 0 32px; }
+  .foot-grid{ display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:40px; padding-bottom:44px; border-bottom:1px solid rgba(255,255,255,.12); }
   .foot-grid h4{ color:#fff; font-size:13px; letter-spacing:.1em; margin-bottom:18px; }
   .foot-grid .logo{ color:#fff; margin-bottom:14px; }
+  .foot-grid .logo .en{ color:var(--accent2); }
   .foot-grid p{ font-size:12.5px; line-height:2; }
-  .foot-grid a{ display:block; font-size:12.5px; margin-bottom:10px; color:#C9BBA9; }
+  .foot-grid a{ display:block; font-size:12.5px; margin-bottom:10px; color:#E8C9D6; }
   .foot-grid a:hover{ color:#fff; }
   .foot-bottom{ display:flex; justify-content:space-between; align-items:center; padding-top:28px; font-size:11px; flex-wrap:wrap; gap:12px; }
-  .float-cta{ position:fixed; right:24px; bottom:24px; z-index:90; display:flex; align-items:center; gap:10px; background:var(--ink); color:#fff; padding:16px 24px; border-radius:999px; font-size:13px; letter-spacing:.05em; box-shadow:0 14px 34px -10px rgba(36,28,23,.55); opacity:0; transform:translateY(16px) scale(.9); pointer-events:none; transition:opacity .4s ease, transform .4s ease, background .3s ease; }
+  .float-cta{ position:fixed; right:24px; bottom:24px; z-index:90; display:flex; align-items:center; gap:10px; background:var(--accent); color:#fff; padding:16px 24px; border-radius:999px; font-size:13px; letter-spacing:.05em; box-shadow:0 14px 34px -10px rgba(225,76,116,.6); opacity:0; transform:translateY(16px) scale(.9); pointer-events:none; transition:opacity .4s ease, transform .4s ease, background .3s ease; }
   .float-cta.show{ opacity:1; transform:translateY(0) scale(1); pointer-events:auto; }
   .float-cta:hover{ background:var(--accent-deep); }
-  .float-cta::before{ content:""; position:absolute; inset:-4px; border-radius:999px; border:1px solid var(--accent); opacity:.6; animation:pulse-ring 2.2s cubic-bezier(.4,0,.6,1) infinite; }
-  @keyframes pulse-ring{ 0%{ transform:scale(1); opacity:.6;} 100%{ transform:scale(1.25); opacity:0;} }
+  .float-cta::before{ content:""; position:absolute; inset:-4px; border-radius:999px; border:1px solid var(--accent2); opacity:.7; animation:pulse-ring 2.2s cubic-bezier(.4,0,.6,1) infinite; }
+  @keyframes pulse-ring{ 0%{ transform:scale(1); opacity:.7;} 100%{ transform:scale(1.25); opacity:0;} }
   .section-head h2.glow{ text-shadow:0 0 40px var(--glow); }
-  .ribbon{ display:inline-flex; align-items:center; gap:10px; background:linear-gradient(100deg, var(--gold3), var(--gold1), var(--accent-deep)); background-size:200% auto; animation:ribbon-shine 4s linear infinite; color:#fff; padding:10px 26px; border-radius:999px; font-size:12.5px; letter-spacing:.06em; margin:0 auto 40px; width:fit-content; box-shadow:0 10px 26px -10px rgba(140,98,57,.6); }
+  .ribbon{ display:inline-flex; align-items:center; gap:10px; background:linear-gradient(100deg, var(--gold3), var(--gold1), var(--accent-deep)); background-size:200% auto; animation:ribbon-shine 4s linear infinite; color:#fff; padding:10px 26px; border-radius:999px; font-size:12.5px; letter-spacing:.06em; margin:0 auto 40px; width:fit-content; box-shadow:0 10px 26px -10px rgba(225,76,116,.55); }
   @keyframes ribbon-shine{ to{ background-position:200% center; } }
+  .benefits-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+  .benefit-card{ background:var(--card); border-radius:18px; padding:38px 26px; text-align:center; box-shadow:0 10px 30px -14px rgba(225,76,116,.22); border:1px solid var(--line); transition:transform .35s ease, box-shadow .35s ease; }
+  .benefit-card:hover{ transform:translateY(-8px); box-shadow:0 24px 44px -16px rgba(225,76,116,.35); }
+  .benefit-card .icon{ font-size:36px; margin-bottom:16px; }
+  .benefit-card h3{ font-size:15px; margin-bottom:10px; font-weight:600; }
+  .benefit-card p{ font-size:12.5px; color:var(--ink-soft); }
+  .benefit-card .note{ display:inline-block; margin-top:14px; font-size:10.5px; color:var(--accent-deep); background:var(--bg-alt); padding:4px 14px; border-radius:999px; letter-spacing:.03em; }
+  .flow-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+  .flow-step{ text-align:center; padding:0 18px; position:relative; }
+  .flow-step .flow-line{ position:absolute; top:28px; left:calc(50% + 30px); width:calc(100% - 60px); height:2px; background:var(--line); z-index:0; }
+  .flow-step:last-child .flow-line{ display:none; }
+  .flow-step .circle{ width:56px; height:56px; border-radius:50%; position:relative; z-index:1; background:linear-gradient(135deg,var(--accent),var(--accent-deep)); color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:700; box-shadow:0 12px 26px -8px rgba(225,76,116,.55); }
+  .flow-step h3{ font-size:14.5px; margin-bottom:8px; font-weight:600; }
+  .flow-step p{ font-size:12.5px; color:var(--ink-soft); }
   .testi-marquee{ overflow:hidden; margin-top:20px; }
   .testi-track{ display:flex; gap:20px; width:max-content; animation:testi-scroll 34s linear infinite; }
   .testi-marquee:hover .testi-track{ animation-play-state:paused; }
-  .testi-card{ width:300px; background:var(--card); border:1px solid var(--line); padding:26px 24px; flex-shrink:0; }
+  .testi-card{ width:300px; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:26px 24px; flex-shrink:0; }
   .testi-card::before{ content:"\201C"; font-family:'Shippori Mincho',serif; font-size:34px; color:var(--accent); display:block; margin-bottom:4px; }
-  .testi-card p{ font-size:13px; color:var(--ink-soft); line-height:1.85; margin-bottom:14px; min-height:88px; }
+  .testi-card p{ font-size:14px; color:var(--ink-soft); line-height:1.85; margin-bottom:14px; min-height:88px; }
   .testi-card .who{ font-size:11px; color:var(--accent-deep); letter-spacing:.05em; }
   @keyframes testi-scroll{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
   .faq{ max-width:720px; margin:0 auto; }
@@ -184,13 +203,16 @@
   .faq-q .plus{ font-family:'Cormorant Garamond',serif; font-size:24px; color:var(--accent-deep); transition:transform .35s ease; flex-shrink:0; }
   .faq-item.open .faq-q .plus{ transform:rotate(135deg); }
   .faq-a{ max-height:0; overflow:hidden; transition:max-height .4s ease; }
-  .faq-item.open .faq-a{ max-height:200px; }
-  .faq-a p{ padding:0 4px 24px; font-size:13px; color:var(--ink-soft); }
+  .faq-item.open .faq-a{ max-height:220px; }
+  .faq-a p{ padding:0 4px 24px; font-size:14px; color:var(--ink-soft); }
   @media (max-width:860px){
     .nav-links, .hero-stats .label{ display:none; }
     .burger{ display:flex; }
     .concept, .access, .stylist{ grid-template-columns:1fr; }
     .features{ grid-template-columns:1fr 1fr; }
+    .benefits-grid{ grid-template-columns:1fr 1fr; }
+    .flow-grid{ grid-template-columns:1fr; gap:36px; }
+    .flow-step .flow-line{ display:none; }
     .gallery{ grid-template-columns:repeat(2,1fr); grid-auto-rows:120px; }
     .g1,.g5{ grid-column:span 2; }
     .foot-grid{ grid-template-columns:1fr; }
@@ -205,9 +227,9 @@
     <div class="logo"><span class="en">Rêve</span><span>吉祥寺</span></div>
     <nav class="nav-links">
       <a href="#concept">Concept<span class="ja">コンセプト</span></a>
-      <a href="#staff">Staff<span class="ja">スタッフ</span></a>
       <a href="#menu">Menu<span class="ja">メニュー</span></a>
-      <a href="#news">News<span class="ja">お知らせ</span></a>
+      <a href="#benefits">Benefits<span class="ja">特典</span></a>
+      <a href="#staff">Staff<span class="ja">スタッフ</span></a>
       <a href="#voice">Voice<span class="ja">口コミ</span></a>
       <a href="#access">Access<span class="ja">アクセス</span></a>
     </nav>
@@ -226,7 +248,10 @@
     <line class="l5" x1="258" y1="94" x2="322" y2="86"/>
     <line class="l6" x1="255" y1="106" x2="314" y2="114"/>
   </svg>
-  <div class="hero-badge reveal in">★★★★★ <span>5.0</span> Googleクチコミ評価（仮）</div>
+  <div class="hero-badges reveal in">
+    <div class="hero-badge">★★★★★ <span>5.0</span> Googleクチコミ評価（仮）</div>
+    <div class="hero-badge campaign">🎉 ご新規様 初回¥1,000 OFF</div>
+  </div>
   <div class="eyebrow reveal in">Private Lash &amp; Brow Salon</div>
   <h1 class="reveal in">一本一本に、<span class="en gradient-text">soin</span>を。<br><span class="gradient-text">吉祥寺の隠れ家サロン</span></h1>
   <p class="sub reveal in">なりたい印象に寄り添うデザインと、丁寧なカウンセリング。<br>吉祥寺駅から徒歩圏内、完全予約制のプライベートサロンです。</p>
@@ -252,8 +277,8 @@
   <div class="wrap concept">
     <div class="concept-visual reveal">
       <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20,100 C60,50 140,50 180,100 C140,140 60,140 20,100 Z" fill="none" stroke="#5A3E22" stroke-width="1.6"/>
-        <circle cx="100" cy="100" r="18" fill="none" stroke="#5A3E22" stroke-width="1.6"/>
+        <path d="M20,100 C60,50 140,50 180,100 C140,140 60,140 20,100 Z" fill="none" stroke="#E14C74" stroke-width="1.6"/>
+        <circle cx="100" cy="100" r="18" fill="none" stroke="#E14C74" stroke-width="1.6"/>
       </svg>
     </div>
     <div class="concept-text reveal reveal-1">
@@ -303,28 +328,63 @@
     <div class="section-head reveal">
       <div class="eyebrow">Menu</div>
       <h2 class="serif">メニュー・料金</h2>
-      <p>※料金は仮のものです。公開前に正式な価格へ更新してください。</p>
+      <p>※東京都内の同業種サロンの相場を基にした参考価格です。正式な価格は開業前にご確認ください。</p>
     </div>
-    <div class="ribbon reveal">🎉 ご新規様限定キャンペーン実施中（仮）</div>
+    <div class="ribbon reveal">🎉 ご新規様限定 初回オフ無料キャンペーン実施中（仮）</div>
+    <div class="menu-combo reveal">まつげ＋眉毛を同時にご利用で ¥1,000 OFF（仮）</div>
     <div class="menu-tabs reveal reveal-1">
       <div class="menu-tab active" data-tab="lash">Eyelash</div>
       <div class="menu-tab" data-tab="brow">Eyebrow</div>
     </div>
     <div class="menu-panel active reveal reveal-1" id="panel-lash">
-      <div class="menu-row"><span class="name">ナチュラルシングル<small>100本／束感控えめ</small></span><span class="price en">¥6,500</span></div>
-      <div class="menu-row"><span class="name">ボリュームラッシュ<small>120本／ふんわり束感</small></span><span class="price en">¥8,500</span></div>
-      <div class="menu-row"><span class="name">まつげパーマ<small>地まつげを立ち上げる</small></span><span class="price en">¥6,000</span></div>
+      <div class="menu-row"><span class="name">シングルラッシュ<small>100本／ナチュラルな束感</small></span><span class="price en">¥6,000</span></div>
+      <div class="menu-row"><span class="name">ボリュームラッシュ<small>120本／3D〜6D・ふんわり束感</small></span><span class="price en">¥8,500</span></div>
+      <div class="menu-row"><span class="name">まつげパーマ<small>パリジェンヌラッシュリフト</small></span><span class="price en">¥7,000</span></div>
+      <div class="menu-row"><span class="name">下まつげエクステ<small>上まつげメニューに追加</small></span><span class="price en">+¥1,500</span></div>
       <div class="menu-note">初回オフ無料（他店オフは+¥1,000）</div>
+      <div class="menu-source">※価格は東京都内相場（まつげエクステ 100本 約5,500〜6,500円、まつげパーマ 約6,000〜10,000円）を参考に設定した仮の金額です。</div>
     </div>
     <div class="menu-panel" id="panel-brow">
-      <div class="menu-row"><span class="name">眉毛サロン<small>デザイン＋ワックス＋眉ティント</small></span><span class="price en">¥5,000</span></div>
+      <div class="menu-row"><span class="name">眉毛サロン<small>デザイン＋ワックス＋眉ティント</small></span><span class="price en">¥5,500</span></div>
       <div class="menu-row"><span class="name">眉毛ワックス<small>単品</small></span><span class="price en">¥3,000</span></div>
       <div class="menu-row"><span class="name">眉ティント<small>単品／持続約1〜2週間</small></span><span class="price en">¥3,500</span></div>
+      <div class="menu-row"><span class="name">眉毛ラミネーション<small>眉毛パーマ・持続約1ヶ月</small></span><span class="price en">¥7,000</span></div>
       <div class="menu-note">初めての方はカウンセリング込み</div>
+      <div class="menu-source">※価格は東京都内相場（眉毛サロン中央値 約4,000〜6,000円、眉毛パーマ 約6,000〜9,000円）を参考に設定した仮の金額です。</div>
     </div>
   </div>
 </section>
-<section class="alt" id="news">
+<section id="benefits">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Benefits</div>
+      <h2 class="serif glow">お得な特典・紹介制度</h2>
+      <p>ご新規様も常連様も、もっとお得にご利用いただける仕組みをご用意しています。</p>
+    </div>
+    <div class="benefits-grid reveal reveal-1">
+      <div class="benefit-card"><div class="icon">🎁</div><h3>ご紹介特典</h3><p>お友達をご紹介いただくと、ご紹介者様・ご紹介された方どちらも割引になります。</p><div class="note">双方 ¥1,000 OFF（仮）</div></div>
+      <div class="benefit-card"><div class="icon">📸</div><h3>フォロー特典</h3><p>Instagramをフォローし、ご来店前にストーリーズでシェアしていただくと割引になります。</p><div class="note">¥500 OFF（仮）</div></div>
+      <div class="benefit-card"><div class="icon">💌</div><h3>公式LINEクーポン</h3><p>お友達登録いただいた方に、次回ご来店時に使えるお得なクーポンをお届けします。</p><div class="note">近日開始予定</div></div>
+      <div class="benefit-card"><div class="icon">🎫</div><h3>リピーター特典</h3><p>3回のご来店ごとに、眉毛メニュー1回分をプレゼントするスタンプ制度です。</p><div class="note">3回来店で1回無料（仮）</div></div>
+    </div>
+  </div>
+</section>
+<section class="alt" id="flow">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Flow</div>
+      <h2 class="serif">はじめての方へ・ご予約の流れ</h2>
+      <p>初めての方でも安心してご来店いただけるよう、ご予約からアフターケアまでサポートします。</p>
+    </div>
+    <div class="flow-grid reveal reveal-1">
+      <div class="flow-step"><div class="flow-line"></div><div class="circle">1</div><h3>DMでご相談</h3><p>Instagram DMからお悩みやご希望を気軽に送るだけ。ご質問だけでも歓迎です。</p></div>
+      <div class="flow-step"><div class="flow-line"></div><div class="circle">2</div><h3>日程調整</h3><p>空き状況を確認し、最短当日〜3日以内を目安にご案内します（仮）。</p></div>
+      <div class="flow-step"><div class="flow-line"></div><div class="circle">3</div><h3>カウンセリング</h3><p>ご来店後、骨格やなりたいイメージに合わせて一緒にデザインを決めていきます。</p></div>
+      <div class="flow-step"><div class="circle">4</div><h3>施術・アフターケア</h3><p>仕上がりの確認と、長持ちさせるための自宅ケア方法までご案内します。</p></div>
+    </div>
+  </div>
+</section>
+<section id="news">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">News</div>
@@ -341,7 +401,7 @@
     </div>
   </div>
 </section>
-<section id="staff">
+<section class="alt" id="staff">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">Staff</div>
@@ -364,7 +424,7 @@
     </div>
   </div>
 </section>
-<section class="alt" id="voice">
+<section id="voice">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">Voice</div>
@@ -389,7 +449,7 @@
     </div>
   </div>
 </section>
-<section id="faq">
+<section class="alt" id="faq">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">FAQ</div>
@@ -399,6 +459,7 @@
       <div class="faq-item open"><div class="faq-q"><span>施術中の痛みはありますか？</span><span class="plus">+</span></div><div class="faq-a"><p>目元にやさしい施術を徹底しており、多くのお客様が施術中に眠ってしまうほどリラックスしていただいています。</p></div></div>
       <div class="faq-item"><div class="faq-q"><span>施術時間はどれくらいですか？</span><span class="plus">+</span></div><div class="faq-a"><p>メニューにもよりますが、まつげエクステで60〜90分、眉毛メニューで30〜45分が目安です（仮）。</p></div></div>
       <div class="faq-item"><div class="faq-q"><span>初めてでも予約できますか？</span><span class="plus">+</span></div><div class="faq-a"><p>もちろん可能です。カウンセリングを丁寧に行いますので、Instagram DMからお気軽にご相談ください。</p></div></div>
+      <div class="faq-item"><div class="faq-q"><span>ご紹介特典はどう使えますか？</span><span class="plus">+</span></div><div class="faq-a"><p>ご紹介いただく方のお名前をDMでお伝えいただくだけで、次回ご来店時に双方へ割引を適用します（仮の内容です）。</p></div></div>
       <div class="faq-item"><div class="faq-q"><span>キャンセルはいつまで可能ですか？</span><span class="plus">+</span></div><div class="faq-a"><p>ご予約前日までにDMにてご連絡ください（仮の内容です。実際のポリシーに差し替えてください）。</p></div></div>
       <div class="faq-item"><div class="faq-q"><span>お支払い方法を教えてください</span><span class="plus">+</span></div><div class="faq-a"><p>現金・キャッシュレス決済に対応しています（仮の内容です。実際の対応方法に差し替えてください）。</p></div></div>
     </div>
@@ -461,10 +522,11 @@
       <div>
         <h4>MENU</h4>
         <a href="#concept">コンセプト</a>
-        <a href="#staff">スタッフ</a>
         <a href="#gallery">ギャラリー</a>
         <a href="#menu">メニュー・料金</a>
-        <a href="#news">お知らせ</a>
+        <a href="#benefits">特典・紹介制度</a>
+        <a href="#flow">ご予約の流れ</a>
+        <a href="#staff">スタッフ</a>
         <a href="#voice">お客様の声</a>
         <a href="#faq">よくある質問</a>
         <a href="#access">アクセス</a>
@@ -540,7 +602,7 @@
     if (mobileNav) { mobileNav.remove(); mobileNav = null; return; }
     mobileNav = document.createElement('div');
     mobileNav.style.cssText = 'position:fixed;top:64px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);padding:20px 28px;display:flex;flex-direction:column;gap:16px;z-index:99;';
-    [['concept','コンセプト'],['staff','スタッフ'],['menu','メニュー'],['news','お知らせ'],['voice','口コミ'],['faq','FAQ'],['access','アクセス']].forEach(([id,label]) => {
+    [['concept','コンセプト'],['menu','メニュー'],['benefits','特典'],['flow','ご予約の流れ'],['staff','スタッフ'],['voice','口コミ'],['faq','FAQ'],['access','アクセス']].forEach(([id,label]) => {
       const a = document.createElement('a');
       a.href = '#' + id;
       a.textContent = label;
