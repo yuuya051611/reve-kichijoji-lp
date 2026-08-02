@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>〇〇 〇〇（仮）｜SALON VILLAGE 吉祥寺</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FFFAF6; --bg-alt: #FFF0EC; --card: #FFFFFF; --ink: #3D2B2A; --ink-soft: #8A716E;
+    --accent: #FF6F91; --accent2: #FFB347; --accent-deep: #E14C74; --line: #FFE1E4; --dark: #3D2233;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ font-family:'Noto Sans JP', sans-serif; background:var(--bg); color:var(--ink); line-height:1.8; letter-spacing:0.02em;
+    min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:64px 20px 40px;
+    background: radial-gradient(ellipse at 15% 10%, rgba(255,111,145,0.16), transparent 50%), radial-gradient(ellipse at 85% 20%, rgba(255,179,71,0.14), transparent 45%), var(--bg);
+  }
+  h1,h2,h3,.serif{ font-family:'Shippori Mincho', serif; }
+  .en{ font-family:'Cormorant Garamond', serif; font-style:italic; }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ width:100%; max-width:420px; text-align:center; }
+  .logo{ font-size:12px; letter-spacing:.2em; color:var(--accent-deep); text-transform:uppercase; margin-bottom:36px; }
+  .avatar{ width:132px; height:132px; border-radius:50%; margin:0 auto 22px; position:relative;
+    background:conic-gradient(from 210deg, #FFDCE4, #FF9EB0, #E14C74, #FFDCE4); display:flex; align-items:center; justify-content:center; }
+  .avatar::before{ content:""; position:absolute; inset:6px; border-radius:50%; background:var(--bg-alt); }
+  .avatar span{ position:relative; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:44px; color:var(--accent-deep); }
+  .role{ font-size:11px; letter-spacing:.2em; color:var(--accent-deep); text-transform:uppercase; margin-bottom:8px; }
+  .name{ font-size:22px; margin-bottom:10px; }
+  .bio{ font-size:13.5px; color:var(--ink-soft); margin-bottom:36px; }
+  .links{ display:flex; flex-direction:column; gap:14px; }
+  .link-btn{ display:flex; align-items:center; justify-content:center; gap:10px; width:100%; padding:16px 20px;
+    border-radius:999px; background:var(--card); border:1.5px solid var(--line); font-size:14px; letter-spacing:.04em;
+    box-shadow:0 8px 20px -12px rgba(225,76,116,.25); transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease; }
+  .link-btn:hover{ transform:translateY(-3px); box-shadow:0 14px 26px -12px rgba(225,76,116,.35); }
+  .link-btn.primary{ background:var(--accent); color:#fff; border-color:var(--accent); }
+  .link-btn.primary:hover{ background:var(--accent-deep); }
+  .link-btn svg{ width:18px; height:18px; flex-shrink:0; }
+  .placeholder-note{ margin-top:8px; font-size:10.5px; color:var(--ink-soft); opacity:.85; }
+  .back{ display:inline-block; margin-top:40px; font-size:12px; color:var(--ink-soft); border-bottom:1px solid var(--ink-soft); padding-bottom:2px; }
+  .back:hover{ color:var(--accent-deep); border-color:var(--accent-deep); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo"><span class="en">SALON VILLAGE</span> 吉祥寺</div>
+  <div class="avatar"><span>R</span></div>
+  <div class="role">Owner / Stylist</div>
+  <div class="name serif">〇〇 〇〇（仮）</div>
+  <div class="bio">その人らしさを引き立てるデザインを大切に。<br>ご予約・ご相談はこちらから。</div>
+  <div class="links">
+    <a class="link-btn primary" href="https://beauty.hotpepper.jp/CSP/kr/reserve/?storeId=H000784345" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path fill="currentColor" d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zm12 6v12H5V8h14zM8.5 11.5l2 2 4.5-4.5 1.4 1.4-5.9 5.9-3.4-3.4z"/></svg>
+      <span>ご予約はこちら（ホットペッパー）</span>
+    </a>
+    <a class="link-btn" href="https://www.instagram.com/salonvillage_tokyo/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2c2.7 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.21.6 1.76 1.15.5.5.9 1.1 1.15 1.76.25.64.42 1.37.47 2.43.05 1.06.06 1.42.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.76 4.9 4.9 0 0 1-1.76 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.42.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.76-1.15 4.9 4.9 0 0 1-1.15-1.76c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.7 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.21 1.15-1.76A4.9 4.9 0 0 1 5.44 2.53c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.3 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.4-8.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>
+      <span>Instagram @salonvillage_tokyo</span>
+    </a>
+    <div>
+      <a class="link-btn" href="https://line.me/R/ti/p/@example" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 5.94 2 10.8c0 4.36 3.6 8.02 8.46 8.72.33.07.78.22.9.5.1.26.07.66.03.92l-.15.9c-.04.26-.2 1.02.9.56 1.1-.47 5.9-3.47 8.05-5.95C21.66 14.6 22 12.78 22 10.8 22 5.94 17.52 2 12 2z"/></svg>
+        <span>LINE公式アカウント</span>
+      </a>
+      <div class="placeholder-note">※LINEリンクは仮のURLです。公式アカウント作成後に差し替えます</div>
+    </div>
+  </div>
+  <a class="back" href="index.html">← サロンサイトトップへ戻る</a>
+</div>
+</body>
+</html>
