@@ -62,12 +62,15 @@
   .btn-cream:hover{ background:#fff; transform:translateY(-2px); }
   .burger{ display:none; flex-direction:column; gap:5px; cursor:pointer; }
   .burger span{ width:22px; height:1px; background:var(--ink); display:block; }
-  .hero{ position:relative; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:150px 0 60px; background: radial-gradient(ellipse at 15% 15%, rgba(255,111,145,0.20), transparent 50%), radial-gradient(ellipse at 85% 25%, rgba(255,179,71,0.18), transparent 45%), radial-gradient(ellipse at 50% 100%, rgba(255,158,176,0.14), transparent 55%), var(--bg); overflow:hidden; }
-  .hero::before, .hero::after{ content:""; position:absolute; border-radius:50%; filter:blur(70px); z-index:0; pointer-events:none; opacity:.55; }
-  .hero::before{ width:280px; height:280px; background:var(--accent2); top:10%; left:6%; animation:floatOrb 9s ease-in-out infinite; }
-  .hero::after{ width:320px; height:320px; background:var(--accent); bottom:8%; right:8%; animation:floatOrb 11s ease-in-out infinite reverse; }
-  @keyframes floatOrb{ 0%,100%{ transform:translateY(0) scale(1);} 50%{ transform:translateY(-20px) scale(1.06);} }
-  .hero-parallax{ position:relative; z-index:1; will-change:transform, opacity; }
+  .hero{ position:relative; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:150px 0 60px; overflow:hidden; }
+  .hero-slides{ position:absolute; inset:0; z-index:0; }
+  .hero-slide{ position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; animation:heroFade 18s infinite; filter:brightness(.7) saturate(1.05); }
+  .hero-slide:nth-child(1){ background-image:url('https://images.pexels.com/photos/3373729/pexels-photo-3373729.jpeg?auto=compress&cs=tinysrgb&w=1400'); animation-delay:0s; }
+  .hero-slide:nth-child(2){ background-image:url('https://images.pexels.com/photos/3373735/pexels-photo-3373735.jpeg?auto=compress&cs=tinysrgb&w=1400'); animation-delay:6s; }
+  .hero-slide:nth-child(3){ background-image:url('https://imgbp.hotp.jp/CSP/IMG_SRC_K/64/82/C060116482/C060116482.jpg?impolicy=HPB_policy_default&w=1400&h=933'); animation-delay:12s; }
+  @keyframes heroFade{ 0%{opacity:0;} 4%{opacity:1;} 30%{opacity:1;} 36%{opacity:0;} 100%{opacity:0;} }
+  .hero::before{ content:""; position:absolute; inset:0; z-index:1; background: radial-gradient(ellipse at 15% 15%, rgba(255,111,145,0.30), transparent 55%), radial-gradient(ellipse at 85% 25%, rgba(255,179,71,0.24), transparent 50%), linear-gradient(180deg, rgba(255,250,246,.55), rgba(255,250,246,.88) 70%, var(--bg) 100%); pointer-events:none; }
+  .hero-parallax{ position:relative; z-index:2; will-change:transform, opacity; }
   .hero-name{ font-family:'Noto Sans JP', sans-serif; font-weight:300; font-size:clamp(26px,4vw,40px); letter-spacing:0.32em; color:var(--ink); margin-bottom:24px; }
   .hero-name .accent{ color:var(--accent-deep); }
   .hero-badges{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:22px; }
@@ -79,6 +82,9 @@
   .hero h1 .en{ font-size:1.15em; color:var(--accent-deep); }
   .hero p.sub{ font-size:16px; color:var(--ink-soft); max-width:480px; margin:0 auto 44px; }
   .hero-actions{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:20px;}
+  .hero-scroll{ position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; gap:8px; margin-top:36px; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:12px; letter-spacing:.25em; color:var(--ink-soft); }
+  .hero-scroll .line{ width:1px; height:34px; background:linear-gradient(180deg, var(--accent-deep), transparent); animation:scrollLine 1.8s ease-in-out infinite; }
+  @keyframes scrollLine{ 0%{ transform:scaleY(0); transform-origin:top; opacity:0;} 40%{ transform:scaleY(1); transform-origin:top; opacity:1;} 60%{ transform:scaleY(1); transform-origin:bottom; opacity:1;} 100%{ transform:scaleY(0); transform-origin:bottom; opacity:0;} }
   .marquee{ background:var(--dark); color:var(--cream); overflow:hidden; white-space:nowrap; padding:18px 0; }
   .marquee-track{ display:inline-block; animation:scroll-left 26s linear infinite; }
   .marquee-track span{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; letter-spacing:.04em; padding:0 28px; opacity:.9; }
@@ -145,15 +151,13 @@
   .stylist-bio h3{ font-size:22px; margin-bottom:16px; }
   .stylist-bio p{ font-size:14px; color:var(--ink-soft); margin-bottom:14px; }
   .stylist-bio .quote{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:17px; color:var(--accent-deep); }
-  .insta-grid{ display:grid; grid-template-columns:repeat(6,1fr); gap:10px; margin-bottom:36px; }
-  .insta-cell{ aspect-ratio:1; position:relative; overflow:hidden; border-radius:12px; display:flex; align-items:center; justify-content:center; }
-  .insta-cell svg{ width:34%; opacity:.9; }
-  .insta-cell:nth-child(1){ background:linear-gradient(160deg,#FFDCE4,#FF9EB0); }
-  .insta-cell:nth-child(2){ background:linear-gradient(160deg,#FFB347,#E14C74); }
-  .insta-cell:nth-child(3){ background:linear-gradient(160deg,#FFD9A0,#FF6F91); }
-  .insta-cell:nth-child(4){ background:linear-gradient(160deg,#E14C74,#8A2E52); }
-  .insta-cell:nth-child(5){ background:linear-gradient(160deg,#FF6F91,#FFDCE4); }
-  .insta-cell:nth-child(6){ background:linear-gradient(160deg,#FFC2CE,#FFD9A0); }
+  .style-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:36px; }
+  .style-cell{ aspect-ratio:3/4; position:relative; overflow:hidden; border-radius:14px; background-size:cover; background-position:center; }
+  .style-cell .style-overlay{ position:absolute; inset:0; display:flex; align-items:flex-end; padding:16px; background:linear-gradient(0deg, rgba(61,34,51,.75), transparent 55%); opacity:0; transition:opacity .35s ease; }
+  .style-cell:hover .style-overlay{ opacity:1; }
+  .style-cell:hover img, .style-cell:hover{ transform:scale(1.03); }
+  .style-cell{ transition:transform .5s ease; }
+  .style-overlay span{ color:#fff; font-size:12.5px; letter-spacing:.04em; }
   .insta-follow{ text-align:center; }
   .access{ display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
   .access-map{ aspect-ratio:4/3; width:100%; border:1px solid var(--line); border-radius:16px; filter:saturate(1.05) contrast(1.02); }
@@ -221,7 +225,7 @@
     .flow-step .flow-line{ display:none; }
     .ba-grid{ grid-template-columns:1fr; gap:28px; }
     .foot-grid{ grid-template-columns:1fr; }
-    .insta-grid{ grid-template-columns:repeat(3,1fr); }
+    .style-grid{ grid-template-columns:repeat(2,1fr); }
     .float-cta span.label-full{ display:none; }
   }
 </style>
@@ -246,6 +250,11 @@
   </div>
 </header>
 <section class="hero">
+  <div class="hero-slides" aria-hidden="true">
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+  </div>
   <div class="hero-parallax" id="heroParallax">
   <div class="hero-name reveal in">SALON VILLAGE <span class="accent">吉祥寺</span></div>
   <div class="hero-badges reveal in">
@@ -263,6 +272,7 @@
     <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 2c2.7 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.21.6 1.76 1.15.5.5.9 1.1 1.15 1.76.25.64.42 1.37.47 2.43.05 1.06.06 1.42.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.76 4.9 4.9 0 0 1-1.76 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.42.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.76-1.15 4.9 4.9 0 0 1-1.15-1.76c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.7 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.21 1.15-1.76A4.9 4.9 0 0 1 5.44 2.53c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.3 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.4-8.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>
     <span>@salonvillage_tokyo をフォロー</span>
   </a>
+  <div class="hero-scroll reveal in"><span class="en">SCROLL</span><div class="line"></div></div>
   </div>
 </section>
 <div class="marquee">
@@ -324,15 +334,15 @@
     <div class="ba-grid reveal reveal-1">
       <div class="ba-pair reveal-scale">
         <div class="ba-images">
-          <div class="ba-img before" style="background-image:url('https://images.pexels.com/photos/3373729/pexels-photo-3373729.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800');"><span class="ba-chip">Before</span></div>
-          <div class="ba-img after" style="background-image:url('https://images.pexels.com/photos/3373735/pexels-photo-3373735.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800');"><span class="ba-chip">After</span></div>
+          <div class="ba-img before" style="background-image:url('https://images.pexels.com/photos/3373729/pexels-photo-3373729.jpeg?auto=compress&cs=tinysrgb&w=800');"><span class="ba-chip">Before</span></div>
+          <div class="ba-img after" style="background-image:url('https://images.pexels.com/photos/3373735/pexels-photo-3373735.jpeg?auto=compress&cs=tinysrgb&w=800');"><span class="ba-chip">After</span></div>
         </div>
         <div class="ba-caption"><strong>まつげ：</strong>ナチュラル → ボリュームラッシュ</div>
       </div>
       <div class="ba-pair reveal-scale">
         <div class="ba-images">
-          <div class="ba-img before" style="background-image:url('https://images.pexels.com/photos/3373723/pexels-photo-3373723.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800');"><span class="ba-chip">Before</span></div>
-          <div class="ba-img after" style="background-image:url('https://images.pexels.com/photos/3373743/pexels-photo-3373743.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800');"><span class="ba-chip">After</span></div>
+          <div class="ba-img before" style="background-image:url('https://images.pexels.com/photos/3373723/pexels-photo-3373723.jpeg?auto=compress&cs=tinysrgb&w=800');"><span class="ba-chip">Before</span></div>
+          <div class="ba-img after" style="background-image:url('https://images.pexels.com/photos/3373743/pexels-photo-3373743.jpeg?auto=compress&cs=tinysrgb&w=800');"><span class="ba-chip">After</span></div>
         </div>
         <div class="ba-caption"><strong>眉毛：</strong>地眉 → 眉毛ラミネーション</div>
       </div>
@@ -484,16 +494,15 @@
 <section>
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow">Instagram</div>
-      <h2 class="serif">最新の投稿</h2>
+      <div class="eyebrow">Style</div>
+      <h2 class="serif">STYLE ギャラリー</h2>
+      <p>まつげ・眉毛の仕上がりイメージをまとめてご紹介します。</p>
     </div>
-    <div class="insta-grid reveal reveal-1">
-      <div class="insta-cell"><svg viewBox="0 0 100 100"><path d="M10,50 C30,20 70,20 90,50 C70,80 30,80 10,50 Z" fill="none" stroke="#fff" stroke-width="3"/></svg></div>
-      <div class="insta-cell"><svg viewBox="0 0 100 100"><path d="M10,50 C30,20 70,20 90,50 C70,80 30,80 10,50 Z" fill="none" stroke="#fff" stroke-width="3"/></svg></div>
-      <div class="insta-cell"><svg viewBox="0 0 100 100"><path d="M10,50 C30,20 70,20 90,50 C70,80 30,80 10,50 Z" fill="none" stroke="#fff" stroke-width="3"/></svg></div>
-      <div class="insta-cell"><svg viewBox="0 0 100 100"><path d="M10,50 C30,20 70,20 90,50 C70,80 30,80 10,50 Z" fill="none" stroke="#fff" stroke-width="3"/></svg></div>
-      <div class="insta-cell"><svg viewBox="0 0 100 100"><path d="M10,50 C30,20 70,20 90,50 C70,80 30,80 10,50 Z" fill="none" stroke="#fff" stroke-width="3"/></svg></div>
-      <div class="insta-cell"><svg viewBox="0 0 100 100"><path d="M10,50 C30,20 70,20 90,50 C70,80 30,80 10,50 Z" fill="none" stroke="#fff" stroke-width="3"/></svg></div>
+    <div class="style-grid reveal reveal-1">
+      <div class="style-cell" style="background-image:url('https://images.pexels.com/photos/3373735/pexels-photo-3373735.jpeg?auto=compress&cs=tinysrgb&w=600');"><div class="style-overlay"><span>ボリュームラッシュ</span></div></div>
+      <div class="style-cell" style="background-image:url('https://images.pexels.com/photos/3373743/pexels-photo-3373743.jpeg?auto=compress&cs=tinysrgb&w=600');"><div class="style-overlay"><span>眉毛ラミネーション</span></div></div>
+      <div class="style-cell" style="background-image:url('https://images.pexels.com/photos/3373729/pexels-photo-3373729.jpeg?auto=compress&cs=tinysrgb&w=600');"><div class="style-overlay"><span>ナチュラルラッシュ</span></div></div>
+      <div class="style-cell" style="background-image:url('https://images.pexels.com/photos/3373723/pexels-photo-3373723.jpeg?auto=compress&cs=tinysrgb&w=600');"><div class="style-overlay"><span>地眉デザイン</span></div></div>
     </div>
     <div class="insta-follow reveal reveal-2">
       <a class="btn btn-line" href="https://www.instagram.com/salonvillage_tokyo/" target="_blank" rel="noopener">@salonvillage_tokyo をフォロー</a>
